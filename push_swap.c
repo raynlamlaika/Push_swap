@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/18 20:50:53 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2024/12/18 21:16:13 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int check_args(int ac,char **av)
 				j++;
 			}
 			integer =  ft_atoi(av[i]);
-			printf("the arg passsed: %d\n",integer);
+			printf("the arg passsed is: %d\n",integer);
 			i++;
 
 		}
@@ -41,22 +41,54 @@ int check_args(int ac,char **av)
 	return (0);
 }
 
-int	switch_to_intger(int *ac, char **av, int *stack_a)
-{
-	int i;
-	int j;
 
-	i = 1;
-	j = 0;
-	while (ac[i])
-	{
-		stack_a[j] = ac[i++];
-		printf("%d",stack_a[j++]);
 
-	}
+int linked_list_appand(int , int , )
+// sa (swap a): swap the first tow elemment in Stack_a.
 
-	return (i);
-}
+
+
+// sb (swap b): swap the first tow elemment in Stack_b
+
+
+
+//ss : sa and sb at the same time
+
+
+
+//pa (push a): Take the first element at the top of b and put it at the top of a.
+
+
+
+//pb (push b): Take the first element at the top of a and put it at the top of b.
+
+
+//ra (rotate a): Shift up all elements of stack a by 1.
+
+
+
+//rb (rotate b): Shift up all elements of stack b by 1.
+
+
+
+//rr : ra and rb at the same time.
+
+
+
+//rra (reverse rotate a): Shift down all elements of stack a by 1
+
+
+
+//rrb (reverse rotate b): Shift down all elements of stack b by 1.
+
+
+
+//rrr : rra and rrb at the same time.
+
+
+
+
+
 int main(int ac, char **av)
 {
 	int stack_a[500];
@@ -64,12 +96,14 @@ int main(int ac, char **av)
 	char *error;
 
 	error = "Error\n";
-	if(!(check_args(ac, av))) // check for thet argemment that are all valide
+	if(!(check_args(ac, av))) 
+// check for thet argemment that are all valide
 		return (write(1, error, 7), 0);
-	// switch and appand the stack from av to stack
-	printf(" this is in pass");
+	write(1, "passe the checking successefully" ,33);
+// switch and appand the stack from av to stack
 
-	switch_to_intger(&ac, av, stack_a);
+
+	linked_list_appand(&ac, av, stack_a);
 	//sort_args();
 	//sorting the stack a and b right here
 
