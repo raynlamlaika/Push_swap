@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 21:02:06 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/17 22:38:55 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2024/12/18 20:41:55 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_atoi(const char *str)
 
 int	ft_isdigit(int c)
 {
-	if (c >= 48 && c <= 57 && c == '-' && c == '+')
+	if (c >= 48 && c <= 57 || c == '-' || c == '+')
 		return (1);
 	return (0);
 }

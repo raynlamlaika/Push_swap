@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/18 20:31:30 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2024/12/18 20:50:53 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,25 @@ int check_args(int ac,char **av)
 
 	i = 1;
 	j = 2;
-	if (ac > i)
+	if (ac > 1)
 	{
-		while (av[i])
+		while (ac > i)
 		{
-			if ((ft_isdigit(av[i])))
-				return (0);
+			j = 0;
+			while(av[i][j])
+			{
+				if (!(ft_isdigit(av[i][j])))
+					return (write(2, "Invalid argument passed", 24), 0); // handel the overflow for the args !!
+				j++;
+			}
 			integer =  ft_atoi(av[i]);
-			printf("rayan %d\n",integer);
+			printf("the arg passsed: %d\n",integer);
 			i++;
+
 		}
 		return (1);
 	}
-	return (1);
+	return (0);
 }
 
 int	switch_to_intger(int *ac, char **av, int *stack_a)
