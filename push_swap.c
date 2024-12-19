@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/18 21:16:13 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2024/12/19 03:13:00 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int check_args(int ac,char **av)
 			j = 0;
 			while(av[i][j])
 			{
-				if (!(ft_isdigit(av[i][j])))
+				if (!(is_valid(av[i][j])))
 					return (write(2, "Invalid argument passed", 24), 0); // handel the overflow for the args !!
 				j++;
 			}
@@ -41,9 +41,31 @@ int check_args(int ac,char **av)
 	return (0);
 }
 
+int	*creating_list(int ac, char **av, l_list *linkedlist)
+{
+	int i;
+	int	integer;
+	l_list arg;
 
+	i = 0;
+	while (ac > i)
+	{
+		printf("check CHECK\n");
+		integer =  ft_atoi(av[i]);
+		arg.data = &integer;
+		printf("%d \n", &arg.data);
 
-int linked_list_appand(int , int , )
+		ft_lstadd_back(&linkedlist, &arg);
+		i++;
+	}
+	l_list *head = linkedlist;
+	while (head->data)
+	{
+		printf("%s \n", head->data);
+		head = head->next;
+	}
+	return 0;
+}
 // sa (swap a): swap the first tow elemment in Stack_a.
 
 
@@ -87,23 +109,30 @@ int linked_list_appand(int , int , )
 
 
 
-
-
 int main(int ac, char **av)
 {
 	int stack_a[500];
 	int stack_b[500];
 	char *error;
+	l_list	*the_list;
+	l_list	*linkedlist;
 
 	error = "Error\n";
 	if(!(check_args(ac, av))) 
-// check for thet argemment that are all valide
+// check for valid argemment passed
 		return (write(1, error, 7), 0);
-	write(1, "passe the checking successefully" ,33);
+	write(1, "passe the checking successefully\n" ,34);
+
+
 // switch and appand the stack from av to stack
+	write(1,"now letss pass to the liked list\n",34);
+	int *i;
+	i = creating_list(ac, av, linkedlist);
 
 
-	linked_list_appand(&ac, av, stack_a);
+
+
+	
 	//sort_args();
 	//sorting the stack a and b right here
 

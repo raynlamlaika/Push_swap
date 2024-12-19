@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 21:02:06 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/18 20:41:55 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2024/12/19 04:51:55 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,34 @@ int	ft_atoi(const char *str)
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		if (rs > (9223372036854775807 - str[i] - 48) / 10)
+		if (rs > ((9223372036854775807 - str[i] - 48)) / 10)
 			return (ft_overflow(sing));
 		rs = rs * 10 + str[i] - '0';
 		i++;
 	}
 	return ((int )rs * sing);
 }
-
-int	ft_isdigit(int c)
+// need to check for the input 
+int	is_valid(int c)
 {
 	if (c >= 48 && c <= 57 || c == '-' || c == '+')
 		return (1);
 	return (0);
+}
+//for implimentation of the linked list
+void	ft_lstadd_back(l_list **lst, l_list *new)
+{
+	l_list	*p;
+
+	if (!lst || !new)
+		return ;
+	if (*lst == NULL)
+	{
+		*lst = new;
+		return ;
+	}
+	p = *lst;
+	while (p->next)
+		p = p->next;
+	p->next = new;
 }
