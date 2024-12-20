@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 04:51:14 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/19 04:51:22 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2024/12/19 05:28:08 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ static char	**intotowdarray(char const*s, char c, char**p, size_t*index)
 	}
 	return (p);
 }
-
+#include "libc.h"
 char	**ft_split(char const *s, char c)
 {
 	size_t	words;
@@ -113,6 +113,7 @@ char	**ft_split(char const *s, char c)
 	if (!p)
 		return (NULL);
 	index = 0;
+
 	p = intotowdarray(s, c, p, &index);
 	if (!p)
 		return (NULL);
