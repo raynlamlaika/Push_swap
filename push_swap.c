@@ -6,60 +6,11 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/20 16:46:40 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2024/12/20 22:05:01 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int check_args(int ac,char **av)
-{
-	int i;
-	int j;
-
-	i = 1;
-	j = 0;
-	if (ac > 1)
-	{
-		while (av[i])
-		{
-			printf("%s", av[i]);
-
-
-
-		}
-	}
-	return 1;
-}
-
-int	*creating_list(int ac, char **av, l_list *linkedlist)
-{
-	int i;
-	int	integer;
-	l_list arg;
-
-	i = 0;
-	while (ac > i)
-	{
-		printf("check CHECK\n");
-		integer =  ft_atoi(av[i]);
-		arg.data = &integer;
-
-		ft_lstadd_back(&linkedlist, &arg);
-		i++;
-	}
-	l_list *head = linkedlist;
-	while (head->data)
-	{
-		head = head->next;
-	}
-	return 0;
-}
-
-
-
-
-
 
 void spliting_input(int ac, char **av, l_list **linked)
 {
@@ -103,6 +54,7 @@ int check(l_list *linked)
 	}
 	return 1;
 }
+
 int main(int ac, char** av)
 {
 	l_list *linked= NULL;
@@ -110,20 +62,17 @@ int main(int ac, char** av)
 
 	error = "Error\n";
 	spliting_input(ac, av, &linked);
-	int o = check(linked);
+	int o = check(linked); //check for list size (lst > 3 || 2)
 	if (o == 0)
 		return((write(1,error,7)),0);
 	l_list *current = linked;
 
-	// while(current)
-	// {
-	// 	printf("this is are the input splitiong |%s|\n",(char *)current->data);
-	// 	current = current->next;
-	// }
+	while(current)
+	{
+		printf("this is are the input splitiong |%s|\n",(char *)current->data);
+		current = current->next;
+	}
 }
-
-
-
 
 // sa (swap a): swap the first tow elemment in Stack_a.
 // sb (swap b): swap the first tow elemment in Stack_b
@@ -178,20 +127,11 @@ int main(int ac, char** av)
 // 				return (0);
 // 	}
 // }
-
-
-
-
-
-
    // arguments = ft_split(av[1], ' ');
 	// int i = 0;
 	// while (*arguments)
 	// 	printf("%s",arguments[i++]);
 
-
-
-		
     // if (!arguments)
     //     return (write(1, error, 7), 0);
 	// if(!(check_args(ac, arguments)))
