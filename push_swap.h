@@ -30,5 +30,4 @@ char	**ft_split(char const *s, char c);
 size_t	ft_strlen(const char *str);
 l_list	*ft_lstnew(void *content);
 
-
 #endif
