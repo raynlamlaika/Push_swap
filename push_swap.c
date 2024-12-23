@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/20 22:05:01 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2024/12/23 14:02:49 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,27 +55,26 @@ int check(l_list *linked)
 	return 1;
 }
 
-int main(int ac, char** av)
+// sa (swap a): swap the first tow elemment in Stack_a.
+void *swap_a(l_list *stack_a)
 {
-	l_list *linked= NULL;
-	char	*error;
+	l_list	*top;
+	l_list	*tmp;
 
-	error = "Error\n";
-	spliting_input(ac, av, &linked);
-	int o = check(linked); //check for list size (lst > 3 || 2)
-	if (o == 0)
-		return((write(1,error,7)),0);
-	l_list *current = linked;
 
-	while(current)
-	{
-		printf("this is are the input splitiong |%s|\n",(char *)current->data);
-		current = current->next;
-	}
+	if (!stack_a || ft_lstsize(stack_a) < 2)
+		return (0);
+	
+	tmp = stack_a;
+	top = tmp->next;
+	tmp = top;
+	stack_a = tmp->next;
+	return (1);
 }
 
-// sa (swap a): swap the first tow elemment in Stack_a.
 // sb (swap b): swap the first tow elemment in Stack_b
+
+
 //ss : sa and sb at the same time
 //pa (push a): Take the first element at the top of b and put it at the top of a.
 //pb (push b): Take the first element at the top of a and put it at the top of b.
@@ -88,59 +87,26 @@ int main(int ac, char** av)
 
 
 // SORTING ALGOOOOO
-// int main(int ac, char **av)
-// {
-// 	char	**arguments;
-// 	char	*error;
-// 	l_list	*the_list;
-// 	l_list	*linkedlist;
 
-// 	error = "Error\n";
-// //Parssing
-// 	int i = 1 ;
-// 	int j = 0 ;
-// 	int integer;
-// 	char **fuck;
-// 	if (ac >= 1)
-// 	{
-// 		if (ac == 2)
-// 		{
-// 			fuck = ft_split(av[1], ' ');
-// 			if (!fuck)
-// 				return(0);
-// 			while (fuck[j] && !fuck[j])
-// 				if (is_valid(fuck[j]))
-// 				{
-// 					integer = ft_atoi(fuck[j++]);
-// 					printf("this is the int we pass :%d\n",integer);
-// 				}
-// 				else
-// 					return (0);
-// 		}
-// 		while (av[i] )
-// 			if (is_valid(av[i]))
-// 			{
-// 				integer  = ft_atoi(av[i++]);
-// 				printf("this is the int we pass :%d\n",integer);
-// 			}
-// 			else
-// 				return (0);
-// 	}
-// }
-   // arguments = ft_split(av[1], ' ');
-	// int i = 0;
-	// while (*arguments)
-	// 	printf("%s",arguments[i++]);
 
-    // if (!arguments)
-    //     return (write(1, error, 7), 0);
-	// if(!(check_args(ac, arguments)))
-// check for valid argemment passed
-	//	return (write(1, error, 7), 0);
-//	write(1, "passe the checking successefully\n" ,34);
-// switch and appand the stack from av to stack
-//	write(1,"now letss pass to the liked list\n",34);
-	// int *i;
-	// i = creating_list(ac, arguments, linkedlist);
-	//sort_args();
-	//sorting the stack a and b right here
+
+
+int main(int ac, char** av)
+{
+	l_list	*stack_a= NULL;
+	l_list	*stack_b = NULL;
+	char	*error;
+
+	error = "Error\n";
+	spliting_input(ac, av, &stack_a);
+	int o = check(stack_a); //check for list size (lst > 3 || 2)
+	if (o == 0)
+		return((write(1,error,7)),0);
+	l_list *current = stack_a;
+
+	while(current)
+	{
+		printf("this is are the input splitiong |%s|\n",(char *)current->data);
+		current = current->next;
+	}
+}
