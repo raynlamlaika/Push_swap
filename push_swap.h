@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:24 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/24 15:55:05 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2024/12/25 00:24:31 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ int		ft_lstsize(l_list *lst);
 int		swap_ab(l_list **stack_b, l_list **stack_a);
 int		swap_a(l_list **stack_a);
 int		swap_b(l_list **stack_b);
-void	push_a(l_list **stack_b, l_list **stack_a);
+void	push_a(l_list **stack_a, l_list **stack_b);
+l_list	*lst_second(l_list *lst);
+int		rotate_a(l_list **stack_a);
+int		rotate_b(l_list **stack_b);
+int		rotate_ab(l_list **stack_a, l_list **stack_b);
 
 #endif

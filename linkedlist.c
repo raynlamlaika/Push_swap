@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sizeoflist.c                                       :+:      :+:    :+:   */
+/*   linkedlist.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 13:41:19 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/23 13:57:51 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2024/12/25 00:05:59 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,3 +27,11 @@ int	ft_lstsize(l_list *lst)
 	return (i);
 }
 
+l_list	*lst_second(l_list *lst)
+{
+	if (!lst)
+		return (NULL);
+	while (lst->next->next)
+		lst = lst->next;
+	return (lst);
+}

@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 16:17:11 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/24 15:58:37 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2024/12/25 00:24:17 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,13 @@ int	swap_b(l_list **stack_b)
 //ss : sa and sb at the same time
 int	swap_ab(l_list **stack_b, l_list **stack_a)
 {
-	if (!(swap_a(stack_b)) && !(swap_b(stack_a)))
+	if (!(swap_a(stack_b)) || !(swap_b(stack_a)))
 		return (0);
 	return (1);
 }
 
 //pa (push a): Take the first element at the top of b and put it at the top of a.
-void push_a(l_list **stack_b, l_list **stack_a)
+void push_a(l_list **stack_a, l_list **stack_b)
 {
 	l_list *top_b; // represent the top of stack B
 
@@ -70,12 +70,57 @@ void push_a(l_list **stack_b, l_list **stack_a)
 
 //pb (push b): Take the first element at the top of a and put it at the top of b.
 
+void push_b(l_list **stack_b, l_list **stack_a)
+{
+	l_list *top_a; // represent the top of stack B
+
+	if (!*stack_a) 
+		return;
+	top_a = *stack_a;
+	*stack_a = (*stack_a)->next;
+	top_a->next = *stack_b;
+	*stack_b = top_a;
+}
+
 //ra (rotate a): Shift up all elements of stack a by 1.
+int rotate_a(l_list **stack_a)
+{
+	l_list	*botton;
+	l_list	*top;
 
+	
+	if (!*stack_a || !(*stack_a)->next)
+		return (0);
+	top = lst_second(*stack_a);
+	botton = top->next;
+	top->next = NULL;
+	botton->next = *stack_a;
+	*stack_a = botton;
+	return (1);
+}
 //rb (rotate b): Shift up all elements of stack b by 1.
+int rotate_b(l_list **stack_b)
+{
+	l_list	*botton;
+	l_list	*top;
 
+	
+	if (!*stack_b || !(*stack_b)->next)
+		return (0);
+	top = lst_second(*stack_b);
+	botton = top->next;
+	top->next = NULL;
+	botton->next = *stack_b;
+	*stack_b = botton;
+	return (1);
+}
 //rr : ra and rb at the same time.
-
+int rotate_ab(l_list **stack_a, l_list **stack_b)
+{
+	if (!(rotate_a(stack_a)) || !(rotate_b(stack_b)))
+		return (0);
+	return (1);
+}
 //rra (reverse rotate a): Shift down all elements of stack a by 1
 
 //rrb (reverse rotate b): Shift down all elements of stack b by 1.

@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/24 16:03:20 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2024/12/25 00:32:50 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int main(int ac, char** av)
 {
 	l_list	*stack_a= NULL;
 	l_list	*stack_b = NULL;
+	stack_b = malloc(sizeof(l_list));
 	char	*error;
 
 	error = "Error\n";
@@ -68,22 +69,28 @@ int main(int ac, char** av)
 	if (o == 0)
 		return((write(1,error,7)),0);
 	l_list *current = stack_a;
+	rotate_a(&current);
+	rotate_a(&current);
+	rotate_a(&current);
+	rotate_b(&current);
 
 	while(current)
 	{
-		printf("this is are the input splitiong |%s|\n",(char *)current->data);
+		printf("|%s|--->",(char *)current->data);
 		current = current->next;
 	}
-	l_list *xx = stack_a;
-	printf("\n\n\n");
-	push_a(&xx,&stack_b);
-	printf("this is push in stack_b |%s|\n",(char *)stack_b->data);
+	// l_list *xx = stack_a;
+	// printf("\n\n\n");
+	// stack_b->data = (int *)"we";
+	// stack_b->next->data = (int *)"ee";
+	// rotate_a(&xx);
 
-	while(stack_b)
-	{
-		printf("this is are the input splitiong |%s|\n",(char *)stack_b->data);
-		stack_b = stack_b->next;
-	}
+	// while(stack_b || xx)
+	// {
+	// 	printf("this is are the input splitiong |%s| thi thi tui  |%s|\n",(char *)stack_b->data,(char *)xx->data);
+	// 	stack_b = stack_b->next;
+	// 	xx=xx->next;
+	// }
 	//lets check push oppertions
 	
 }
