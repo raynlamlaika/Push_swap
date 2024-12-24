@@ -6,16 +6,14 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 16:17:11 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/23 20:45:04 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2024/12/24 15:58:37 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.c"
-
-
+#include "push_swap.h"
 
 // sa (swap a): swap the first tow elemment in Stack_a.
-void	*swap_a(l_list **stack_a)
+int	swap_a(l_list **stack_a)
 {
 	l_list	*top;
 	l_list	*tmp;
@@ -32,7 +30,7 @@ void	*swap_a(l_list **stack_a)
 }
 
 // sb (swap b): swap the first tow elemment in Stack_b
-void	*swap_b(l_list **stack_b)
+int	swap_b(l_list **stack_b)
 {
 	l_list	*top;
 	l_list	*tmp;
@@ -49,9 +47,9 @@ void	*swap_b(l_list **stack_b)
 }
 
 //ss : sa and sb at the same time
-void	*swap_ab(l_list **stack_b, l_list **stack_a)
+int	swap_ab(l_list **stack_b, l_list **stack_a)
 {
-	if (!(swap_a(&stack_b)) && !(swap_b(&stack_a)))
+	if (!(swap_a(stack_b)) && !(swap_b(stack_a)))
 		return (0);
 	return (1);
 }
@@ -59,16 +57,16 @@ void	*swap_ab(l_list **stack_b, l_list **stack_a)
 //pa (push a): Take the first element at the top of b and put it at the top of a.
 void push_a(l_list **stack_b, l_list **stack_a)
 {
-	l_list *top_b;
+	l_list *top_b; // represent the top of stack B
 
 	if (!*stack_b) 
 		return;
-
 	top_b = *stack_b;
-	*stack_b = top_b->next;
+	*stack_b = (*stack_b)->next;
 	top_b->next = *stack_a;
 	*stack_a = top_b;
 }
+
 
 //pb (push b): Take the first element at the top of a and put it at the top of b.
 

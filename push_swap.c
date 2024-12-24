@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/23 16:19:03 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2024/12/24 16:03:20 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ int	check(l_list *linked)
 	return 1;
 }
 
-
-
 int main(int ac, char** av)
 {
 	l_list	*stack_a= NULL;
@@ -77,14 +75,15 @@ int main(int ac, char** av)
 		current = current->next;
 	}
 	l_list *xx = stack_a;
-	write(1,"\n\n\n",3);
-	swap_a(&xx);
-	while(xx)
+	printf("\n\n\n");
+	push_a(&xx,&stack_b);
+	printf("this is push in stack_b |%s|\n",(char *)stack_b->data);
+
+	while(stack_b)
 	{
-		printf("this is are the input splitiong |%s|\n",(char *)xx->data);
-		xx = xx->next;
+		printf("this is are the input splitiong |%s|\n",(char *)stack_b->data);
+		stack_b = stack_b->next;
 	}
 	//lets check push oppertions
-	push_a(stack_a, stack_b);
 	
 }
