@@ -67,9 +67,7 @@ void push_a(l_list **stack_a, l_list **stack_b)
 	*stack_a = top_b;
 }
 
-
 //pb (push b): Take the first element at the top of a and put it at the top of b.
-
 void push_b(l_list **stack_b, l_list **stack_a)
 {
 	l_list *top_a; // represent the top of stack B
@@ -98,6 +96,7 @@ int rotate_a(l_list **stack_a)
 	*stack_a = botton;
 	return (1);
 }
+
 //rb (rotate b): Shift up all elements of stack b by 1.
 int rotate_b(l_list **stack_b)
 {
@@ -114,6 +113,7 @@ int rotate_b(l_list **stack_b)
 	*stack_b = botton;
 	return (1);
 }
+
 //rr : ra and rb at the same time.
 int rotate_ab(l_list **stack_a, l_list **stack_b)
 {
