@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 16:17:11 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/25 18:18:52 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2024/12/25 18:34:13 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,30 +126,45 @@ int rotate_ab(l_list **stack_a, l_list **stack_b)
 // rra (reverse rotate a): Shift down all elements of stack a by 1
 int reverse_rotate_a(l_list **stack_a)
 {
-    l_list *last;
-    l_list *sec;
+	l_list *last;
+	l_list *sec;
 
-    if (!*stack_a || !(*stack_a)->next)
-        return (0);
+	if (!*stack_a || !(*stack_a)->next)
+		return (0);
 
-    last = ft_lstlast(*stack_a);
-    sec = lst_second(*stack_a);
-    last->next = *stack_a;
-    *stack_a = last; 
-    sec->next = NULL;
+	last = ft_lstlast(*stack_a);
+	sec = lst_second(*stack_a);
+	last->next = *stack_a;
+	*stack_a = last; 
+	sec->next = NULL;
 
-    return (1);
+	return (1);
 }
 
 //rrb (reverse rotate b): Shift down all elements of stack b by 1.
+int reverse_rotate_b(l_list **stack_b)
+{
+	l_list *last;
+	l_list *sec;
 
+	if (!*stack_b || !(*stack_b)->next)
+		return (0);
+
+	last = ft_lstlast(*stack_b);
+	sec = lst_second(*stack_b);
+	last->next = *stack_b;
+	*stack_b = last;
+	sec->next = NULL;
+
+	return (1);
+}
 //rrr : rra and rrb at the same time.
-
+void reverse_rotate_ab(l_list **stack_a, l_list **stack_b)
+{
+	reverse_rotate_a(stack_a);
+	reverse_rotate_b(stack_b);
+}
 // SORTING ALGOOOOO
-
-
-
-
 
 
 
