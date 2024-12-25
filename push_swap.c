@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/25 00:32:50 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2024/12/25 17:32:08 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,13 @@ int main(int ac, char** av)
 	if (o == 0)
 		return((write(1,error,7)),0);
 	l_list *current = stack_a;
-	rotate_a(&current);
-	rotate_a(&current);
-	rotate_a(&current);
-	rotate_b(&current);
-
-	while(current)
+	reverse_rotate_a(&current);
+	int i= 0;
+	while(current && i < 20)
 	{
 		printf("|%s|--->",(char *)current->data);
 		current = current->next;
+		i++;
 	}
 	// l_list *xx = stack_a;
 	// printf("\n\n\n");

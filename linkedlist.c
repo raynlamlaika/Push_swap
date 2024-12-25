@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 13:41:19 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/25 00:05:59 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2024/12/25 17:13:51 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,15 @@ l_list	*lst_second(l_list *lst)
 	if (!lst)
 		return (NULL);
 	while (lst->next->next)
+		lst = lst->next;
+	return (lst);
+}
+
+l_list	*ft_lstlast(l_list *lst)
+{
+	if (!lst)
+		return (NULL);
+	while (lst->next)
 		lst = lst->next;
 	return (lst);
 }

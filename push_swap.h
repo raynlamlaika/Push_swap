@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:24 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/25 00:24:31 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2024/12/25 17:14:06 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+
 typedef struct t_list
 {
 	int*			data;
@@ -37,5 +38,7 @@ l_list	*lst_second(l_list *lst);
 int		rotate_a(l_list **stack_a);
 int		rotate_b(l_list **stack_b);
 int		rotate_ab(l_list **stack_a, l_list **stack_b);
+int		reverse_rotate_a(l_list **stack_a);
+l_list	*ft_lstlast(l_list *lst);
 
 #endif
