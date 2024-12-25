@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 16:17:11 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/25 18:17:18 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2024/12/25 18:18:52 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,21 +122,6 @@ int rotate_ab(l_list **stack_a, l_list **stack_b)
 	return (1);
 }
 
-// RRA traash
-// int reverse_rotate_a(l_list **stack_a)
-// {
-// 	l_list	*botton;
-// 	l_list	*top;
-
-// 	if (!stack_a !*stack_a || !(*stack_a)->next)
-// 		return (0);
-	
-// 	botton = ft_lstlast(*stack_a);
-// 	botton->next = *stack_a;
-// 	*stack_a = (*stack_a)->next;
-// 	botton->next->next = NULL;
-// 	return (1);
-// }
 
 // rra (reverse rotate a): Shift down all elements of stack a by 1
 int reverse_rotate_a(l_list **stack_a)
@@ -163,3 +148,24 @@ int reverse_rotate_a(l_list **stack_a)
 // SORTING ALGOOOOO
 
 
+
+
+
+
+
+
+// RRA traash
+// int reverse_rotate_a(l_list **stack_a)
+// {
+// 	l_list	*botton;
+// 	l_list	*top;
+
+// 	if (!stack_a !*stack_a || !(*stack_a)->next)
+// 		return (0);
+	
+// 	botton = ft_lstlast(*stack_a);
+// 	botton->next = *stack_a;
+// 	*stack_a = (*stack_a)->next;
+// 	botton->next->next = NULL;
+// 	return (1);
+// }
