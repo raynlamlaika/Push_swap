@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/26 01:02:20 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2024/12/26 01:26:12 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void spliting_input(int ac, char **av, l_list **linked)
 		}
 	}
 }
+
 //Parccing: check for not digit argemment
 int	check(l_list *linked)
 {
@@ -110,6 +111,8 @@ int main(int ac, char** av)
 	
 	while(xx)
 	{
+		int i;
+		i = 23;
 		
 		printf("|%d|-->",*xx->data);
 		// xx = current->next;
