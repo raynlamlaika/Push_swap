@@ -82,9 +82,6 @@ void	switch_int(l_list **stack_a)
 //check nodes if this in doubles deffenoition in nodes
 int check_double(l_list **stack_a )
 {
-	int i;
-	i = 0;
-
 	return i;
 }
 
