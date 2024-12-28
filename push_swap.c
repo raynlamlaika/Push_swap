@@ -105,7 +105,6 @@ int main(int ac, char** av)
 	l_list *xx = stack_a;
 	// switch/_int(&xx);
 	
-	
 	while(xx)
 	{
 		int i;
