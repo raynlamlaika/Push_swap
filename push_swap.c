@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/26 01:26:12 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2024/12/28 16:17:49 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,22 @@ void	switch_int(l_list **stack_a)
 //check nodes if this in doubles deffenoition in nodes
 int check_double(l_list **stack_a )
 {
-	return i;
+	return 0;
+}
+
+
+void write_list(l_list *list)
+{
+	int  i;
+
+	i = 0;
+	while(list)
+	{
+		printf("-->%d",*list->data);
+		i++;
+		list=list->next;
+	}
+	printf("\n");
 }
 
 
@@ -92,26 +107,76 @@ int main(int ac, char** av)
 	l_list	*stack_b = NULL;
 	char	*error;
 	int		o;
+	int		size;
+    char operation[10];
 
-	stack_b = malloc(sizeof(l_list));
 	error = "Error\n";
-
-	
 	spliting_input(ac, av, &stack_a);
 	o = check(stack_a); //check for list size (lst > 3 || 2)
 	if (o == 0)
 		return ((write(1,error,7)), 0);
 	switch_int(&stack_a);
 	l_list *xx = stack_a;
-	// switch/_int(&xx);
-	
-	while(xx)
-	{
-		int i;
-		i = 23;
-		
-		printf("|%d|-->",*xx->data);
-		// xx = current->next;
-		xx = xx->next;
-	}
+
+	//size to implemment the algo depand of the size 
+	write_list(stack_a);
+
+	size = ft_lstsize(xx);
+	l_list *fr = find_min(xx);
+	int i = nbt_rotations_needed(xx, fr);
+	printf("the number of the rotate operaitions needed: |%d| to make the min node(%d)\n", i, *fr->data);
+	rotate_to_top(&stack_a, i);
+	write_list(stack_a);
+
+	//for SIZE 3-5: in hardcode can solve it "to be more oprimazed"
+	if (size <= 5)
+		return (write(1, "hard code\n", 11));
+
+	//for SIZE 6-100
+	if (size >=6 && size <= 100)
+		return (write(1, "need in algo\n", 11));
+
+	//for SIZE 100- ++ in big stack
+	if (size > 100)
+		return (write(1, "need in algo\n", 11));
+
+	//write_list(stack_a);
 }
+
+
+
+
+
+//play with the operations
+
+// int main(int ac, char** av)
+// {
+// 	l_list	*stack_a= NULL;
+// 	l_list	*stack_b = NULL;
+// 	char	*error;
+// 	int		o;
+//     char operation[10];
+
+// 	error = "Error\n";
+// 	spliting_input(ac, av, &stack_a);
+// 	o = check(stack_a); //check for list size (lst > 3 || 2)
+// 	if (o == 0)
+// 		return ((write(1,error,7)), 0);
+// 	switch_int(&stack_a);
+// 	printf("Enter operations (e.g., pa, pb, sa, ...), one per line:\n");
+//     while (scanf("%s", operation) != EOF) 
+// 	{
+//         apply_operation(operation, &stack_a, &stack_b);
+//         printf("Stack A: ");
+//         write_list(stack_a);
+//         printf("Stack B: ");
+//         write_list(stack_b);
+//     }
+
+// }
+
+
+
+
+
+

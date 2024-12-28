@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 16:17:11 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/25 18:34:13 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2024/12/28 16:15:12 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,18 +83,17 @@ void push_b(l_list **stack_b, l_list **stack_a)
 //ra (rotate a): Shift up all elements of stack a by 1.
 int rotate_a(l_list **stack_a)
 {
-	l_list	*botton;
-	l_list	*top;
+	l_list *top;
+	l_list *last;
 
-	
 	if (!*stack_a || !(*stack_a)->next)
-		return (0);
-	top = lst_second(*stack_a);
-	botton = top->next;
+		return 0; 
+	top = *stack_a;
+	*stack_a = top->next;
+	last = ft_lstlast(*stack_a);
+	last->next = top;
 	top->next = NULL;
-	botton->next = *stack_a;
-	*stack_a = botton;
-	return (1);
+	return 1;
 }
 
 //rb (rotate b): Shift up all elements of stack b by 1.
@@ -103,14 +102,13 @@ int rotate_b(l_list **stack_b)
 	l_list	*botton;
 	l_list	*top;
 
-	
 	if (!*stack_b || !(*stack_b)->next)
 		return (0);
-	top = lst_second(*stack_b);
-	botton = top->next;
+	top = *stack_b;
+	*stack_b = top->next;
+	botton = ft_lstlast(*stack_b);
+	botton->next = top;
 	top->next = NULL;
-	botton->next = *stack_b;
-	*stack_b = botton;
 	return (1);
 }
 
@@ -165,8 +163,18 @@ void reverse_rotate_ab(l_list **stack_a, l_list **stack_b)
 	reverse_rotate_b(stack_b);
 }
 // SORTING ALGOOOOO
+// for the small stacks "may i will immplemment in hardcode"
+//insertion sort for the stacks may between 6 and 100
+int medium_stack(l_list **stack_a, l_list **stack_b)
+{
+	//implementation of inertion sort 
 
 
+
+	return 0; // returning the size of the stack maybe 
+} 
+
+//Redui sort for the big stacks taht
 
 
 // RRA traash

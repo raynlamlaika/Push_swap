@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:24 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/25 23:49:29 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2024/12/28 15:35:45 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <libc.h>
 
 typedef struct t_list
 {
@@ -41,6 +42,15 @@ int		rotate_ab(l_list **stack_a, l_list **stack_b);
 int		reverse_rotate_a(l_list **stack_a);
 l_list	*ft_lstlast(l_list *lst);
 int		reverse_rotate_b(l_list **stack_b);
-void reverse_rotate_ab(l_list **stack_a, l_list **stack_b);
+void	reverse_rotate_ab(l_list **stack_a, l_list **stack_b);
+void	push_b(l_list **stack_b, l_list **stack_a);
 
+
+
+l_list *find_min(l_list *stack_a);
+int nbt_rotations_needed(l_list *stack_a, l_list *min);
+void rotate_to_top(l_list **stack_a, int steps);
+
+//for the eval
+void apply_operation(const char *operation, l_list **stack_a, l_list **stack_b);
 #endif
