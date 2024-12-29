@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:24 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/28 15:35:45 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2024/12/29 12:21:43 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,9 @@ void	push_b(l_list **stack_b, l_list **stack_a);
 l_list *find_min(l_list *stack_a);
 int nbt_rotations_needed(l_list *stack_a, l_list *min);
 void rotate_to_top(l_list **stack_a, int steps);
-
+void sort_b(l_list **stack_b);
+void write_list(l_list *list);
+void insertion_sort(l_list **stack_a, l_list **stack_b);
 //for the eval
 void apply_operation(const char *operation, l_list **stack_a, l_list **stack_b);
 #endif

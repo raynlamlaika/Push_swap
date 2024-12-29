@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/28 16:17:49 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2024/12/29 12:22:31 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,14 +119,19 @@ int main(int ac, char** av)
 	l_list *xx = stack_a;
 
 	//size to implemment the algo depand of the size 
+	//write_list(stack_a);
 	write_list(stack_a);
+	insertion_sort(&stack_a,&stack_b);
+	write_list(stack_a);
+	write(1,"\n",1);
+	write_list(stack_b);
 
 	size = ft_lstsize(xx);
-	l_list *fr = find_min(xx);
-	int i = nbt_rotations_needed(xx, fr);
-	printf("the number of the rotate operaitions needed: |%d| to make the min node(%d)\n", i, *fr->data);
-	rotate_to_top(&stack_a, i);
-	write_list(stack_a);
+	// l_list *fr = find_min(xx);
+	// int i = nbt_rotations_needed(xx, fr);
+	// printf("the number of the rotate operaitions needed: |%d| to make the min node(%d)\n", i, *fr->data);
+	// rotate_to_top(&stack_a, i);
+	// write_list(stack_a);
 
 	//for SIZE 3-5: in hardcode can solve it "to be more oprimazed"
 	if (size <= 5)
