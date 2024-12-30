@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 16:17:11 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/28 16:15:12 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2024/12/30 09:22:42 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	swap_a(l_list **stack_a)
 	top->next = tmp->next;
 	tmp->next = top;
 	*stack_a = tmp;
+	putstr("sa\n");
 	return (1);
 }
 
@@ -43,6 +44,7 @@ int	swap_b(l_list **stack_b)
 	top->next = tmp->next;
 	tmp->next = top;
 	*stack_b = tmp;
+	putstr("sb\n");
 	return (1);
 }
 
@@ -51,6 +53,7 @@ int	swap_ab(l_list **stack_b, l_list **stack_a)
 {
 	if (!(swap_a(stack_b)) || !(swap_b(stack_a)))
 		return (0);
+	putstr("ss\n");
 	return (1);
 }
 
@@ -65,6 +68,7 @@ void push_a(l_list **stack_a, l_list **stack_b)
 	*stack_b = (*stack_b)->next;
 	top_b->next = *stack_a;
 	*stack_a = top_b;
+	putstr("pa\n");
 }
 
 //pb (push b): Take the first element at the top of a and put it at the top of b.
@@ -78,6 +82,7 @@ void push_b(l_list **stack_b, l_list **stack_a)
 	*stack_a = (*stack_a)->next;
 	top_a->next = *stack_b;
 	*stack_b = top_a;
+	putstr("pb\n");
 }
 
 //ra (rotate a): Shift up all elements of stack a by 1.
@@ -93,6 +98,7 @@ int rotate_a(l_list **stack_a)
 	last = ft_lstlast(*stack_a);
 	last->next = top;
 	top->next = NULL;
+	putstr("ra\n");
 	return 1;
 }
 
@@ -109,6 +115,7 @@ int rotate_b(l_list **stack_b)
 	botton = ft_lstlast(*stack_b);
 	botton->next = top;
 	top->next = NULL;
+	putstr("rb\n");
 	return (1);
 }
 
@@ -117,6 +124,7 @@ int rotate_ab(l_list **stack_a, l_list **stack_b)
 {
 	if (!(rotate_a(stack_a)) || !(rotate_b(stack_b)))
 		return (0);
+	putstr("rr\n");
 	return (1);
 }
 
@@ -129,13 +137,12 @@ int reverse_rotate_a(l_list **stack_a)
 
 	if (!*stack_a || !(*stack_a)->next)
 		return (0);
-
 	last = ft_lstlast(*stack_a);
 	sec = lst_second(*stack_a);
 	last->next = *stack_a;
 	*stack_a = last; 
 	sec->next = NULL;
-
+	putstr("rra\n");
 	return (1);
 }
 
@@ -153,7 +160,7 @@ int reverse_rotate_b(l_list **stack_b)
 	last->next = *stack_b;
 	*stack_b = last;
 	sec->next = NULL;
-
+	putstr("rrb\n");
 	return (1);
 }
 //rrr : rra and rrb at the same time.
@@ -161,6 +168,7 @@ void reverse_rotate_ab(l_list **stack_a, l_list **stack_b)
 {
 	reverse_rotate_a(stack_a);
 	reverse_rotate_b(stack_b);
+	putstr("rrr\n");
 }
 // SORTING ALGOOOOO
 // for the small stacks "may i will immplemment in hardcode"

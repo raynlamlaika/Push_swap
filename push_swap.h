@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:24 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/29 12:21:43 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2024/12/30 09:11:15 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,12 @@ l_list	*ft_lstlast(l_list *lst);
 int		reverse_rotate_b(l_list **stack_b);
 void	reverse_rotate_ab(l_list **stack_a, l_list **stack_b);
 void	push_b(l_list **stack_b, l_list **stack_a);
+void	spliting_input(int ac, char **av, l_list **linked);
+int		check(l_list *linked);
+void	switch_int(l_list **stack_a);
+int		putstr(char *string);
 
-
-
-l_list *find_min(l_list *stack_a);
-int nbt_rotations_needed(l_list *stack_a, l_list *min);
-void rotate_to_top(l_list **stack_a, int steps);
-void sort_b(l_list **stack_b);
+// for the medium stacks (number of node)
 void write_list(l_list *list);
 void insertion_sort(l_list **stack_a, l_list **stack_b);
 //for the eval
