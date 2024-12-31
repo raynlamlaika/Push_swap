@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:24 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/30 09:11:15 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2024/12/31 12:32:13 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include <libc.h>
+
 
 typedef struct t_list
 {
+	int				index;
 	int*			data;
 	struct t_list*	next;
 }					l_list;
@@ -49,9 +50,15 @@ int		check(l_list *linked);
 void	switch_int(l_list **stack_a);
 int		putstr(char *string);
 
+void radix_sort(l_list **stack_a, l_list **stack_b);
 // for the medium stacks (number of node)
 void write_list(l_list *list);
 void insertion_sort(l_list **stack_a, l_list **stack_b);
 //for the eval
 void apply_operation(const char *operation, l_list **stack_a, l_list **stack_b);
+int *switch_to_array(l_list **stack_a, int size);
+
+
+
+
 #endif

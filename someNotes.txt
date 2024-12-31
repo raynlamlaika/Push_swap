@@ -43,3 +43,27 @@ However, this power comes at a cost, specifically in terms of memory usage.
 Each time a recursive function is called, a new layer is added to the system's stack. 
 This layer contains information about the current state of the function, including any variables and their values. 
 As the recursion deepens, more and more of these layers are added, each consuming a portion of the system's memory.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+left shift and right shit in code  << >> they are used to move the bits 
+of some var to the left || right 
+
+Left shift:
+int a = 5;  // 5 in binary: 0000 0101
+int result = a << 1;  // Left shift by 1: 0000 1010 (which is 10 in decimal)
+
+Right shift:
+int a = 5;  // 5 in binary: 0000 0101
+int result = a >> 1;  // Right shift by 1: 0000 0010 (which is 2 in decimal)

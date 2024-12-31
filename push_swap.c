@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/30 09:55:17 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2024/12/31 12:30:41 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,14 +114,24 @@ int main(int ac, char** av)
 	if (o == 0)
 		return ((write(1,error,7)), 0);
 	switch_int(&stack_a);
+
+
 	//size to implemment the algo depand of the size 
 	size = ft_lstsize(stack_a);
+	int *re = switch_to_array(&stack_a, size);
+    write(1, "CHEEEECK\n",10);
+	int j = 0;
+	while (re[j])
+	{
+		printf("arawkan [%d]", re[j++]);
+	}
+	
 	//for SIZE 3-5: in hardcode can solve it "to be more oprimazed"
-	if (size <= 5)
+	if (size <= 4)
 		return (write(1, "hard code\n", 11));
 	//for SIZE 6-100
-	if (size >=6 && size <= 50)
-		insertion_sort(&stack_a,&stack_b);
+	if (size >=5 && size <= 50)
+		return (write(1, "hard code\n", 11));//insertion_sort(&stack_a,&stack_b);
 	//for SIZE 100- ++ in big stack
 	if (size > 100)
 		return (write(1, "need in algo\n", 11));
