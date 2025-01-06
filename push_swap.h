@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:24 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/06 14:14:45 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/06 15:42:46 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int		check(l_list *linked);
 void	switch_int(l_list **stack_a);
 int		putstr(char *string);
 
-void radix_sort(l_list **stack_a, l_list **stack_b);
 // for the medium stacks (number of node)
 void write_list(l_list *list);
 void insertion_sort(l_list **stack_a, l_list **stack_b);
@@ -59,10 +58,7 @@ void insertion_sort(l_list **stack_a, l_list **stack_b);
 void apply_operation(const char *operation, l_list **stack_a, l_list **stack_b);
 int *switch_to_array(l_list **stack_a, int size);
 
-
-
 int sort_index(l_list *lst);
 void	sort_big(l_list **stack_a, l_list **stack_b);
-int mid(l_list **stack_b, int size);
 
 #endif

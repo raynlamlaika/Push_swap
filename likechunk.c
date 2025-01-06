@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 22:47:32 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/06 14:20:32 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/06 15:42:51 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,6 @@ int sort_index(l_list *lst)
 	return  (1);
 }
 
-//the the position of i
-int position()
-{
-
-	
-}
-
 // implemment the functionn to pick the value of the varible j(like size of every chunk)
 int  value_of_j(l_list **stack)
 {
@@ -63,55 +56,6 @@ int  value_of_j(l_list **stack)
 
 	return(j);
 }
-
-
-int mid(l_list **stack_b, int size)
-{
-	int i;
-	l_list *curr;
-
-	i = 0;
-	curr = *stack_b;
-	while (curr)
-	{
-		if(curr->index != size)
-			i++;
-		curr = curr->next;
-	}
-	return  (i);
-}
-
-// pick the func to pick the meduim
-void therealsort(l_list **stack_a, l_list **stack_b)
-{
-	int i;
-	int size;
-
-	size = ft_lstsize(*stack_b);
-	while (size)
-	{
-		i = mid(stack_b, size) -1 ;
-		size = ft_lstsize(*stack_b);
-		if ((*stack_b)->index == size)
-			push_a(stack_a, stack_b);
-		else if (size / 2 < i)
-			reverse_rotate_b(stack_b);
-		else
-			rotate_b(stack_b);
-	}
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 void	set_position(l_list *stack)
 {
@@ -170,7 +114,6 @@ void	move_back_to_a(l_list **a, l_list **b, int size_of_stack)
 	}
 }
 
-
 //the main function to sort the big stack
 void sort_big(l_list **stack_a, l_list **stack_b)
 {
@@ -197,7 +140,6 @@ void sort_big(l_list **stack_a, l_list **stack_b)
 			rotate_a(stack_a);
 		}
 	}
-	//write_list(*stack_b);
 	int size = ft_lstsize(*stack_b);
 	move_back_to_a(stack_a, stack_b,size);//therealsort(stack_a, stack_b);
 }
