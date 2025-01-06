@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:24 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/31 12:32:13 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/06 10:43:34 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct t_list
 {
 	int				index;
 	int*			data;
+	int				medi;
 	struct t_list*	next;
 }					l_list;
 
@@ -60,5 +61,8 @@ int *switch_to_array(l_list **stack_a, int size);
 
 
 
+int sort_index(l_list *lst);
+void	sort_big(l_list **stack_a, l_list **stack_b);
+int mid(l_list **stack_b, int size);
 
 #endif

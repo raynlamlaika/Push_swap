@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 10:12:03 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/31 22:04:24 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/05 01:44:40 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ int *switch_to_array(l_list **stack_a, int size)
 }
 
 //the immplemmentation od radix the implemmentaion of quicksort and swit to array is in helper functions
-void 
 
 
 
