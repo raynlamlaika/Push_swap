@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 22:47:32 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/06 10:59:02 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/06 11:57:11 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void therealsort(l_list **stack_a, l_list **stack_b)
 	while (*stack_b)
 	{
 		i = mid(stack_b, size);
-		size = ft_lstsize(*stack_b) -1;
+		size = ft_lstsize(*stack_b) - 1;
 		if ((*stack_b)->index == size)
 			push_a(stack_a, stack_b);
 		else if (size / 2 < i)
@@ -112,14 +112,17 @@ void sort_big(l_list **stack_a, l_list **stack_b)
 	while ((*stack_a))
 	{
 		if ((*stack_a)->index <= i)
-			push_b(stack_b, stack_a);
+			{push_b(stack_b, stack_a);i++;}
 		else if ((*stack_a)->index < (i + chunk))
 		{
 			push_b(stack_b, stack_a);
 			rotate_b(stack_b);
+			i++;
 		}
 		else
+		{
 			rotate_a(stack_a);
+		}
 	}
 	therealsort(stack_a, stack_b);
 }
