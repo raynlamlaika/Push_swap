@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 21:02:06 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/20 22:03:22 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/06 16:16:40 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,19 +63,19 @@ int	ft_isdigit(int c)
 	return (0);
 }
 
-int is_valid(char *str)
+int	is_valid(char *str)
 {
 	if (!str || !*str)
-		return 0;
-	if (*str == '-' || *str == '+') 
+		return (0);
+	if (*str == '-' || *str == '+')
 		str++;
-	while (*str) 
+	while (*str)
 	{
 		if (!ft_isdigit(*str))
-			return 0;
+			return (0);
 		str++;
 	}
-	return 1;
+	return (1);
 }
 
 l_list	*ft_lstnew(void *content)

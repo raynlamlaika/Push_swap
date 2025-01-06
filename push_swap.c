@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/06 13:55:10 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/06 16:25:40 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,12 @@ void	switch_int(l_list **stack_a)
 		*(int *)(curr->data) = i;
     	curr = curr->next;
 	}
-
 }
 
 //check nodes if this in doubles deffenoition in nodes
 
 
-
+//write in linked list
 void write_list(l_list *list)
 {
 	int  i;
@@ -108,28 +107,14 @@ int main(int ac, char** av)
 
 	error = "Error\n";
 	spliting_input(ac, av, &stack_a);
-	o = check(stack_a); //check for list size (lst > 3 || 2)
+	o = check(stack_a);
 	if (o == 0)
 		return ((write(1,error,7)), 0);
 	switch_int(&stack_a);
-
-	//size to implemment the algo depand of the size 
 	sort_index(stack_a);
-
 	sort_big(&stack_a, &stack_b);
-	//printf("\n\n\n\this is the mid value : |%d|", mid(&ddd, size-1));
-	//write_list(stack_a);
-
-	
-
-	
-	// //for SIZE 3-5: in hardcode can solve it "to be more oprimazed"
-	// if (size <= 4)
-	// 	return (write(1, "hard code\n", 11));
-	// //for SIZE 6-100
-	// if (size >=5 && size <= 50)
-	// 	return (write(1, "hard code\n", 11));//insertion_sort(&stack_a,&stack_b);
-	// //for SIZE 100- ++ in big stack
-	// if (size > 100)
-	// 	return (write(1, "need in algo\n", 11));
+	if (size <= 4 && size >=46)
+	 	insertion_sort(&stack_a, &stack_b);
+	else
+		sort_big(&stack_a, &stack_b);
 }

@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 13:41:19 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/25 17:13:51 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/06 16:17:13 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,20 @@ l_list	*ft_lstlast(l_list *lst)
 	while (lst->next)
 		lst = lst->next;
 	return (lst);
+}
+
+int	max_node_positon(l_list *stack)
+{
+	l_list	*tmp;
+	l_list	*max;
+
+	tmp = stack;
+	max = tmp;
+	while (tmp)
+	{
+		if (*tmp->data > *max->data)
+			max = tmp;
+		tmp = tmp->next;
+	}
+	return (max->position_in_stack);
 }

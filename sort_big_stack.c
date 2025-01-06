@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   likechunk.c                                        :+:      :+:    :+:   */
+/*   sort_big_stack.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 22:47:32 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/06 15:42:51 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/06 16:21:22 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "push_swap.h"
+#include "push_swap.h"
+
 // implemment the sorting index
-int sort_index(l_list *lst)
+int	sort_index(l_list *lst)
 {
-	l_list *tmp1;
-	l_list *tmp2;
+	l_list	*tmp1;
+	l_list	*tmp2;
 
 	tmp1 = lst;
 	while (tmp1)
@@ -35,32 +36,29 @@ int sort_index(l_list *lst)
 		}
 		tmp1 = tmp1->next;
 	}
-	return  (1);
+	return (1);
 }
 
-// implemment the functionn to pick the value of the varible j(like size of every chunk)
-int  value_of_j(l_list **stack)
+int	value_of_j(l_list **stack)
 {
-	int j;
-	int list_size;
+	int	j;
+	int	list_size;
 
 	list_size = ft_lstsize(*stack) - 1;
 	j = 0;
 	if (list_size > 100)
 		return (j = 35);
 	else if (list_size < 100)
-		return (j = 15);	
+		return (j = 15);
 	else
-		return(j = 20);
-
-
-	return(j);
+		return (j = 20);
+	return (j);
 }
 
 void	set_position(l_list *stack)
 {
 	l_list	*curr;
-	int				i;
+	int		i;
 
 	i = 0;
 	curr = stack;
@@ -71,24 +69,6 @@ void	set_position(l_list *stack)
 		curr = curr->next;
 	}
 }
-
-int	max_node_positon(l_list *stack)
-{
-	l_list	*tmp;
-	l_list	*max;
-
-	tmp = stack;
-	max = tmp;
-	while (tmp)
-	{
-		if (*tmp->data > *max->data)
-			max = tmp;
-		tmp = tmp->next;
-	}
-	return (max->position_in_stack);
-}
-
-
 
 void	move_back_to_a(l_list **a, l_list **b, int size_of_stack)
 {
@@ -117,8 +97,8 @@ void	move_back_to_a(l_list **a, l_list **b, int size_of_stack)
 //the main function to sort the big stack
 void sort_big(l_list **stack_a, l_list **stack_b)
 {
-	int i;
-	int chunk;
+	int	i;
+	int	chunk;
 
 	i = 0;
 	chunk = 34; // it will be in deffrant val later
@@ -140,8 +120,5 @@ void sort_big(l_list **stack_a, l_list **stack_b)
 			rotate_a(stack_a);
 		}
 	}
-	int size = ft_lstsize(*stack_b);
-	move_back_to_a(stack_a, stack_b,size);//therealsort(stack_a, stack_b);
+	move_back_to_a(stack_a, stack_b, ft_lstsize(*stack_b));
 }
-
-

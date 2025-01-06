@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 16:17:11 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/30 09:22:42 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/06 16:30:46 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	swap_a(l_list **stack_a)
 
 	if (!*stack_a || ft_lstsize(*stack_a) < 2)
 		return (0);
-
 	top = *stack_a;
 	tmp = top->next;
 	top->next = tmp->next;
@@ -38,7 +37,6 @@ int	swap_b(l_list **stack_b)
 
 	if (!*stack_b || ft_lstsize(*stack_b) < 2)
 		return (0);
-
 	top = *stack_b;
 	tmp = top->next;
 	top->next = tmp->next;
@@ -63,7 +61,7 @@ void push_a(l_list **stack_a, l_list **stack_b)
 	l_list *top_b; // represent the top of stack B
 
 	if (!*stack_b) 
-		return;
+		return ;
 	top_b = *stack_b;
 	*stack_b = (*stack_b)->next;
 	top_b->next = *stack_a;
@@ -128,7 +126,6 @@ int rotate_ab(l_list **stack_a, l_list **stack_b)
 	return (1);
 }
 
-
 // rra (reverse rotate a): Shift down all elements of stack a by 1
 int reverse_rotate_a(l_list **stack_a)
 {
@@ -170,33 +167,3 @@ void reverse_rotate_ab(l_list **stack_a, l_list **stack_b)
 	reverse_rotate_b(stack_b);
 	putstr("rrr\n");
 }
-// SORTING ALGOOOOO
-// for the small stacks "may i will immplemment in hardcode"
-//insertion sort for the stacks may between 6 and 100
-int medium_stack(l_list **stack_a, l_list **stack_b)
-{
-	//implementation of inertion sort 
-
-
-
-	return 0; // returning the size of the stack maybe 
-} 
-
-//Redui sort for the big stacks taht
-
-
-// RRA traash
-// int reverse_rotate_a(l_list **stack_a)
-// {
-// 	l_list	*botton;
-// 	l_list	*top;
-
-// 	if (!stack_a !*stack_a || !(*stack_a)->next)
-// 		return (0);
-	
-// 	botton = ft_lstlast(*stack_a);
-// 	botton->next = *stack_a;
-// 	*stack_a = (*stack_a)->next;
-// 	botton->next->next = NULL;
-// 	return (1);
-// }

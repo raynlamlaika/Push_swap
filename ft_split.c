@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 04:51:14 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/23 14:17:13 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/06 16:08:46 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,6 @@ char	**ft_split(char const *s, char c)
 	if (!p)
 		return (NULL);
 	index = 0;
-
 	p = intotowdarray(s, c, p, &index);
 	if (!p)
 		return (NULL);
