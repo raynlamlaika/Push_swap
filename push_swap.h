@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:24 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/06 10:43:34 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/06 14:14:45 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 
 typedef struct t_list
 {
+	int				position_in_stack;
 	int				index;
 	int*			data;
-	int				medi;
 	struct t_list*	next;
 }					l_list;
 

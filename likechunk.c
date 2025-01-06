@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 22:47:32 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/06 11:57:11 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/06 14:20:32 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,11 @@ void therealsort(l_list **stack_a, l_list **stack_b)
 	int i;
 	int size;
 
-	size = ft_lstsize(*stack_b) - 1;
-	while (*stack_b)
+	size = ft_lstsize(*stack_b);
+	while (size)
 	{
-		i = mid(stack_b, size);
-		size = ft_lstsize(*stack_b) - 1;
+		i = mid(stack_b, size) -1 ;
+		size = ft_lstsize(*stack_b);
 		if ((*stack_b)->index == size)
 			push_a(stack_a, stack_b);
 		else if (size / 2 < i)
@@ -101,6 +101,76 @@ void therealsort(l_list **stack_a, l_list **stack_b)
 	}
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+void	set_position(l_list *stack)
+{
+	l_list	*curr;
+	int				i;
+
+	i = 0;
+	curr = stack;
+	while (curr)
+	{
+		curr->position_in_stack = i;
+		i++;
+		curr = curr->next;
+	}
+}
+
+int	max_node_positon(l_list *stack)
+{
+	l_list	*tmp;
+	l_list	*max;
+
+	tmp = stack;
+	max = tmp;
+	while (tmp)
+	{
+		if (*tmp->data > *max->data)
+			max = tmp;
+		tmp = tmp->next;
+	}
+	return (max->position_in_stack);
+}
+
+
+
+void	move_back_to_a(l_list **a, l_list **b, int size_of_stack)
+{
+	int	max_node_position;
+
+	size_of_stack = ft_lstsize(*b);
+	while (size_of_stack)
+	{
+		set_position(*b);
+		max_node_position = max_node_positon(*b);
+		if (max_node_position < size_of_stack / 2)
+		{
+			while ((*b)->position_in_stack != max_node_position)
+				rotate_b(b);
+		}
+		else
+		{
+			while ((*b)->position_in_stack != max_node_position)
+				reverse_rotate_b(b);
+		}
+		push_a(a, b);
+		size_of_stack--;
+	}
+}
+
+
 //the main function to sort the big stack
 void sort_big(l_list **stack_a, l_list **stack_b)
 {
@@ -108,11 +178,14 @@ void sort_big(l_list **stack_a, l_list **stack_b)
 	int chunk;
 
 	i = 0;
-	chunk = 15; // it will be in deffrant val later
+	chunk = 34; // it will be in deffrant val later
 	while ((*stack_a))
 	{
 		if ((*stack_a)->index <= i)
-			{push_b(stack_b, stack_a);i++;}
+		{
+			push_b(stack_b, stack_a);
+			i++;
+		}
 		else if ((*stack_a)->index < (i + chunk))
 		{
 			push_b(stack_b, stack_a);
@@ -124,28 +197,9 @@ void sort_big(l_list **stack_a, l_list **stack_b)
 			rotate_a(stack_a);
 		}
 	}
-	therealsort(stack_a, stack_b);
+	//write_list(*stack_b);
+	int size = ft_lstsize(*stack_b);
+	move_back_to_a(stack_a, stack_b,size);//therealsort(stack_a, stack_b);
 }
 
-
-
-void	isitsorted(l_list **stack_a, l_list **stack_b)
-{
-	int	i;
-	int	size;
-
-	size = ft_lstsize(*stack_b);
-	while (*stack_b)
-	{
-		size = ft_lstsize(*stack_b) - 1;
-		i = position(*stack_b, size);
-		if ((*stack_b)->index == size)
-			push_a(stack_a, stack_b);
-		else if (i > size / 2)
-			reverse_rotate_b(stack_b);
-		else
-			rotate_b(stack_b);
-	}
-	
-}
 

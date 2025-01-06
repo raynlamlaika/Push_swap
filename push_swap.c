@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/06 11:55:01 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/06 13:55:10 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,7 @@ void	switch_int(l_list **stack_a)
 }
 
 //check nodes if this in doubles deffenoition in nodes
-int check_double(l_list **stack_a )
-{
-	return 0;
-}
+
 
 
 void write_list(l_list *list)
@@ -118,6 +115,7 @@ int main(int ac, char** av)
 
 	//size to implemment the algo depand of the size 
 	sort_index(stack_a);
+
 	sort_big(&stack_a, &stack_b);
 	//printf("\n\n\n\this is the mid value : |%d|", mid(&ddd, size-1));
 	//write_list(stack_a);
