@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/07 15:55:59 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/07 18:26:44 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,6 @@ int	main(int ac, char **av)
 	error = "Error\n";
 	stack_a = NULL;
 	stack_b = NULL;
-	size = ft_lstsize(&stack_a);
 	spliting_input(ac, av, &stack_a);
 	o = check(stack_a);
 	if (o == 0)
@@ -111,6 +110,7 @@ int	main(int ac, char **av)
 	switch_int(&stack_a);
 	sort_index(stack_a);
 	sort_big(&stack_a, &stack_b, size);
+	size = ft_lstsize(&stack_a);
 	if (size <= 4 && size >= 46)
 		insertion_sort(&stack_a, &stack_b);
 	else

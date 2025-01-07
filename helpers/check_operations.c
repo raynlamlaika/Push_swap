@@ -2,8 +2,8 @@
 
 int main(int ac, char** av)
 {
-	l_list	*stack_a= NULL;
-	l_list	*stack_b = NULL;
+	t_list	*stack_a= NULL;
+	t_list	*stack_b = NULL;
 	char	*error;
 	int		o;
     char operation[10];
@@ -23,5 +23,4 @@ int main(int ac, char** av)
         printf("Stack B: ");
         write_list(stack_b);
     }
-
 }
