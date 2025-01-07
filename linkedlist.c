@@ -6,13 +6,13 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 13:41:19 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/06 16:17:13 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/07 15:55:46 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_lstsize(l_list *lst)
+int	ft_lstsize(t_list *lst)
 {
 	int	i;
 
@@ -27,7 +27,7 @@ int	ft_lstsize(l_list *lst)
 	return (i);
 }
 
-l_list	*lst_second(l_list *lst)
+t_list	*lst_second(t_list *lst)
 {
 	if (!lst)
 		return (NULL);
@@ -36,7 +36,7 @@ l_list	*lst_second(l_list *lst)
 	return (lst);
 }
 
-l_list	*ft_lstlast(l_list *lst)
+t_list	*ft_lstlast(t_list *lst)
 {
 	if (!lst)
 		return (NULL);
@@ -45,10 +45,10 @@ l_list	*ft_lstlast(l_list *lst)
 	return (lst);
 }
 
-int	max_node_positon(l_list *stack)
+int	max_node_positon(t_list *stack)
 {
-	l_list	*tmp;
-	l_list	*max;
+	t_list	*tmp;
+	t_list	*max;
 
 	tmp = stack;
 	max = tmp;

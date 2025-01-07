@@ -6,16 +6,16 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 14:54:00 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/06 16:15:04 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/07 15:55:06 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 //find the most small number in stack
-l_list	*find_min(l_list *stack_a)
+t_list	*find_min(t_list *stack_a)
 {
-	l_list	*min_in_stack;
+	t_list	*min_in_stack;
 
 	min_in_stack = stack_a;
 	while (stack_a)
@@ -28,7 +28,7 @@ l_list	*find_min(l_list *stack_a)
 }
 
 //the numer of rotations that we need to pick this smal number in stack
-int	nbt_rotations_needed(l_list *stack_a, l_list *min)
+int	nbt_rotations_needed(t_list *stack_a, t_list *min)
 {
 	int	i;
 
@@ -43,7 +43,7 @@ int	nbt_rotations_needed(l_list *stack_a, l_list *min)
 
 //rotate to take the small number to the top 
 //(as number of retations taht we calulat prevesely)
-void	rotate_to_top(l_list **stack_a, int steps)
+void	rotate_to_top(t_list **stack_a, int steps)
 {
 	while (steps > 0)
 	{
@@ -58,9 +58,9 @@ void	rotate_to_top(l_list **stack_a, int steps)
 }
 
 //sorting stack b to "prepar it to push it into stack_a "
-void	sort_b(l_list **stack_b)
+void	sort_b(t_list **stack_b)
 {
-	l_list	*current;
+	t_list	*current;
 
 	if (!(*stack_b) || !(*stack_b)->next)
 		return ;
@@ -78,16 +78,16 @@ void	sort_b(l_list **stack_b)
 }
 
 //push all the element back to the stack_a
-void	push_back_to_a(l_list **stack_a, l_list **stack_b)
+void	push_back_to_a(t_list **stack_a, t_list **stack_b)
 {
 	while (*stack_b)
 		push_a(stack_a, stack_b);
 }
 
 // insertion algo rghit here 
-void	insertion_sort(l_list **stack_a, l_list **stack_b)
+void	insertion_sort(t_list **stack_a, t_list **stack_b)
 {
-	l_list	*min;
+	t_list	*min;
 	int		rotations;
 
 	while (*stack_a)

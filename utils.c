@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 21:02:06 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/06 16:16:40 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/07 15:56:47 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,11 @@ int	is_valid(char *str)
 	return (1);
 }
 
-l_list	*ft_lstnew(void *content)
+t_list	*ft_lstnew(void *content)
 {
-	l_list	*p;
+	t_list	*p;
 
-	p = (l_list *)malloc(sizeof(l_list));
+	p = (t_list *)malloc(sizeof(t_list));
 	if (!p)
 		return (0);
 	p->data = content;
@@ -90,9 +90,9 @@ l_list	*ft_lstnew(void *content)
 	return (p);
 }
 
-void	ft_lstadd_back(l_list **lst, l_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	l_list	*p;
+	t_list	*p;
 
 	if (!lst || !new)
 		return ;

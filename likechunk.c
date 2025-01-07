@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_big_stack.c                                   :+:      :+:    :+:   */
+/*   likechunk.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 22:47:32 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/07 15:57:37 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/07 16:00:46 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// implemment the sorting index
 int	sort_index(t_list *lst)
 {
 	t_list	*tmp1;
@@ -70,6 +69,22 @@ void	set_position(t_list *stack)
 	}
 }
 
+int	max_node_positon(t_list *stack)
+{
+	t_list	*tmp;
+	t_list	*max;
+
+	tmp = stack;
+	max = tmp;
+	while (tmp)
+	{
+		if (*tmp->data > *max->data)
+			max = tmp;
+		tmp = tmp->next;
+	}
+	return (max->position_in_stack);
+}
+
 void	move_back_to_a(t_list **a, t_list **b, int size_of_stack)
 {
 	int	max_node_position;
@@ -94,14 +109,13 @@ void	move_back_to_a(t_list **a, t_list **b, int size_of_stack)
 	}
 }
 
-//the main function to sort the big stack
-void	sort_big(t_list **stack_a, t_list **stack_b)
+void	sort_big(t_list **stack_a, t_list **stack_b, int size)
 {
 	int	i;
 	int	chunk;
 
 	i = 0;
-	chunk = 34;
+	chunk = value_of_j(&stack_a);
 	while ((*stack_a))
 	{
 		if ((*stack_a)->index <= i)
@@ -120,5 +134,5 @@ void	sort_big(t_list **stack_a, t_list **stack_b)
 			rotate_a(stack_a);
 		}
 	}
-	move_back_to_a(stack_a, stack_b, ft_lstsize(*stack_b));
+	move_back_to_a(stack_a, stack_b, size);
 }

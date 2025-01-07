@@ -6,19 +6,19 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/06 16:25:40 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/07 15:55:59 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-//parccing the input (node by node)
-void spliting_input(int ac, char **av, l_list **linked)
+
+void	spliting_input(int ac, char **av, t_list **linked)
 {
-	int i;
-	int j;
-	char **gone;
-	int l;
-	l_list *lst;
+	int		i;
+	int		j;
+	char	**gone;
+	int		l;
+	t_list	*lst;
 
 	i = 1;
 	while (ac > i && ac > 2)
@@ -41,26 +41,24 @@ void spliting_input(int ac, char **av, l_list **linked)
 	}
 }
 
-//Parccing: check for not digit argemment
-int	check(l_list *linked)
+int	check(t_list *linked)
 {
-	l_list *tmp;
+	t_list	*tmp;
 
 	tmp = linked;
-	while(tmp)
+	while (tmp)
 	{
 		if (!is_valid((char *)tmp->data))
 			return (0);
 		tmp = tmp->next;
 	}
-	return 1;
+	return (1);
 }
 
-// switch char to integer to preparing to check for doubles
-void	switch_int(l_list **stack_a)
+void	switch_int(t_list **stack_a)
 {
-	int i;
-	l_list *curr;
+	int		i;
+	t_list	*curr;
 
 	curr = *stack_a;
 	while (curr)
@@ -74,47 +72,47 @@ void	switch_int(l_list **stack_a)
 			return ;
 		}
 		*(int *)(curr->data) = i;
-    	curr = curr->next;
+		curr = curr->next;
 	}
 }
 
 //check nodes if this in doubles deffenoition in nodes
-
-
-//write in linked list
-void write_list(l_list *list)
+void	write_list(t_list *list)
 {
-	int  i;
+	int	i;
 
 	i = 0;
-	while(list)
+	while (list)
 	{
-		printf("-->%d",*list->data);
-		printf("index :-->%d\n",list->index);
+		printf("-->%d", *list->data);
+		printf("index :-->%d\n", list->index);
 		i++;
-		list=list->next;
+		list = list->next;
 	}
-	printf("\n");
+	putstr("\n");
 }
 
-int main(int ac, char** av)
+int	main(int ac, char **av)
 {
-	l_list	*stack_a= NULL;
-	l_list	*stack_b = NULL;
+	t_list	*stack_a;
+	t_list	*stack_b;
 	char	*error;
 	int		o;
 	int		size;
 
 	error = "Error\n";
+	stack_a = NULL;
+	stack_b = NULL;
+	size = ft_lstsize(&stack_a);
 	spliting_input(ac, av, &stack_a);
 	o = check(stack_a);
 	if (o == 0)
-		return ((write(1,error,7)), 0);
+		return ((write(1, error, 7)), 0);
 	switch_int(&stack_a);
 	sort_index(stack_a);
-	sort_big(&stack_a, &stack_b);
-	if (size <= 4 && size >=46)
-	 	insertion_sort(&stack_a, &stack_b);
+	sort_big(&stack_a, &stack_b, size);
+	if (size <= 4 && size >= 46)
+		insertion_sort(&stack_a, &stack_b);
 	else
-		sort_big(&stack_a, &stack_b);
+		sort_big(&stack_a, &stack_b, size);
 }

@@ -6,17 +6,17 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 16:17:11 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/06 16:30:46 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/07 15:56:33 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // sa (swap a): swap the first tow elemment in Stack_a.
-int	swap_a(l_list **stack_a)
+int	swap_a(t_list **stack_a)
 {
-	l_list	*top;
-	l_list	*tmp;
+	t_list	*top;
+	t_list	*tmp;
 
 	if (!*stack_a || ft_lstsize(*stack_a) < 2)
 		return (0);
@@ -30,10 +30,10 @@ int	swap_a(l_list **stack_a)
 }
 
 // sb (swap b): swap the first tow elemment in Stack_b
-int	swap_b(l_list **stack_b)
+int	swap_b(t_list **stack_b)
 {
-	l_list	*top;
-	l_list	*tmp;
+	t_list	*top;
+	t_list	*tmp;
 
 	if (!*stack_b || ft_lstsize(*stack_b) < 2)
 		return (0);
@@ -46,8 +46,7 @@ int	swap_b(l_list **stack_b)
 	return (1);
 }
 
-//ss : sa and sb at the same time
-int	swap_ab(l_list **stack_b, l_list **stack_a)
+int	swap_ab(t_list **stack_b, t_list **stack_a)
 {
 	if (!(swap_a(stack_b)) || !(swap_b(stack_a)))
 		return (0);
@@ -55,12 +54,11 @@ int	swap_ab(l_list **stack_b, l_list **stack_a)
 	return (1);
 }
 
-//pa (push a): Take the first element at the top of b and put it at the top of a.
-void push_a(l_list **stack_a, l_list **stack_b)
+void	push_a(t_list **stack_a, t_list **stack_b)
 {
-	l_list *top_b; // represent the top of stack B
+	t_list	*top_b;
 
-	if (!*stack_b) 
+	if (!*stack_b)
 		return ;
 	top_b = *stack_b;
 	*stack_b = (*stack_b)->next;
@@ -69,13 +67,12 @@ void push_a(l_list **stack_a, l_list **stack_b)
 	putstr("pa\n");
 }
 
-//pb (push b): Take the first element at the top of a and put it at the top of b.
-void push_b(l_list **stack_b, l_list **stack_a)
+void	push_b(t_list **stack_b, t_list **stack_a)
 {
-	l_list *top_a; // represent the top of stack B
+	t_list	*top_a;
 
-	if (!*stack_a) 
-		return;
+	if (!*stack_a)
+		return ;
 	top_a = *stack_a;
 	*stack_a = (*stack_a)->next;
 	top_a->next = *stack_b;
@@ -83,28 +80,27 @@ void push_b(l_list **stack_b, l_list **stack_a)
 	putstr("pb\n");
 }
 
-//ra (rotate a): Shift up all elements of stack a by 1.
-int rotate_a(l_list **stack_a)
+int	rotate_a(t_list **stack_a)
 {
-	l_list *top;
-	l_list *last;
+	t_list	*top;
+	t_list	*last;
 
 	if (!*stack_a || !(*stack_a)->next)
-		return 0; 
+		return (0);
 	top = *stack_a;
 	*stack_a = top->next;
 	last = ft_lstlast(*stack_a);
 	last->next = top;
 	top->next = NULL;
 	putstr("ra\n");
-	return 1;
+	return (1);
 }
 
 //rb (rotate b): Shift up all elements of stack b by 1.
-int rotate_b(l_list **stack_b)
+int	rotate_b(t_list **stack_b)
 {
-	l_list	*botton;
-	l_list	*top;
+	t_list	*botton;
+	t_list	*top;
 
 	if (!*stack_b || !(*stack_b)->next)
 		return (0);
@@ -118,7 +114,7 @@ int rotate_b(l_list **stack_b)
 }
 
 //rr : ra and rb at the same time.
-int rotate_ab(l_list **stack_a, l_list **stack_b)
+int	rotate_ab(t_list **stack_a, t_list **stack_b)
 {
 	if (!(rotate_a(stack_a)) || !(rotate_b(stack_b)))
 		return (0);
@@ -127,31 +123,30 @@ int rotate_ab(l_list **stack_a, l_list **stack_b)
 }
 
 // rra (reverse rotate a): Shift down all elements of stack a by 1
-int reverse_rotate_a(l_list **stack_a)
+int	reverse_rotate_a(t_list **stack_a)
 {
-	l_list *last;
-	l_list *sec;
+	t_list	*last;
+	t_list	*sec;
 
 	if (!*stack_a || !(*stack_a)->next)
 		return (0);
 	last = ft_lstlast(*stack_a);
 	sec = lst_second(*stack_a);
 	last->next = *stack_a;
-	*stack_a = last; 
+	*stack_a = last;
 	sec->next = NULL;
 	putstr("rra\n");
 	return (1);
 }
 
 //rrb (reverse rotate b): Shift down all elements of stack b by 1.
-int reverse_rotate_b(l_list **stack_b)
+int	reverse_rotate_b(t_list **stack_b)
 {
-	l_list *last;
-	l_list *sec;
+	t_list	*last;
+	t_list	*sec;
 
 	if (!*stack_b || !(*stack_b)->next)
 		return (0);
-
 	last = ft_lstlast(*stack_b);
 	sec = lst_second(*stack_b);
 	last->next = *stack_b;
@@ -160,8 +155,9 @@ int reverse_rotate_b(l_list **stack_b)
 	putstr("rrb\n");
 	return (1);
 }
+
 //rrr : rra and rrb at the same time.
-void reverse_rotate_ab(l_list **stack_a, l_list **stack_b)
+void	reverse_rotate_ab(t_list **stack_a, t_list **stack_b)
 {
 	reverse_rotate_a(stack_a);
 	reverse_rotate_b(stack_b);
