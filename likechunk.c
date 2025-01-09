@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 22:47:32 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/07 16:00:46 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/09 08:05:59 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void	sort_big(t_list **stack_a, t_list **stack_b, int size)
 	int	chunk;
 
 	i = 0;
-	chunk = value_of_j(&stack_a);
+	chunk = value_of_j(stack_a);
 	while ((*stack_a))
 	{
 		if ((*stack_a)->index <= i)

@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 22:47:32 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/07 15:57:37 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/09 08:09:01 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	move_back_to_a(t_list **a, t_list **b, int size_of_stack)
 }
 
 //the main function to sort the big stack
-void	sort_big(t_list **stack_a, t_list **stack_b)
+void	sort_big(t_list **stack_a, t_list **stack_b, int size)
 {
 	int	i;
 	int	chunk;
