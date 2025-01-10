@@ -1,9 +1,18 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" version="26.0.4">
   <diagram name="Page-1" id="EMEx1OBKCK69zbWSrh3P">
-    <mxGraphModel>
+    <mxGraphModel dx="1141" dy="991" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="4P-OQTRNROBFhKRvD-74-1" value="&lt;b&gt;About push swap&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="349" y="20" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4P-OQTRNROBFhKRvD-74-2" value="so this project is really usefull to take in quick intro to how optimize your algo also is really required thing that you well need it in your first interview &quot;sorting algo and how to choise the right algo to you problem with&#39;in optemized code" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="10" y="50" width="300" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="4P-OQTRNROBFhKRvD-74-3" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;the complexity&amp;nbsp;&lt;/span&gt;&lt;/h1&gt;&lt;div&gt;Firstly first the complexity is in measure to represent the uses for in algorithm and another.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;this measure generally represent the amounts of resources need in algorithm to run&amp;nbsp;&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="340" y="230" width="300" height="170" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
