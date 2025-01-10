@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:24 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/07 15:54:42 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/10 10:43:46 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,7 @@ void	write_list(t_list *list);
 void	insertion_sort(t_list **stack_a, t_list **stack_b);
 int		sort_index(t_list *lst);
 void	sort_big(t_list **stack_a, t_list **stack_b, int size);
+t_list	*find_min(t_list *stack_a);
+int		nbt_rotations_needed(t_list *stack_a, t_list *min);
 
 #endif

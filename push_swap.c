@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/09 08:05:25 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/10 14:44:57 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	spliting_input(int ac, char **av, t_list **linked)
 	t_list	*lst;
 
 	i = 1;
-	while (ac > i && ac > 2)
+	while (ac > i)
 	{
 		gone = ft_split(av[i++], ' ');
 		l = 0;
@@ -46,6 +46,8 @@ int	check(t_list *linked)
 	t_list	*tmp;
 
 	tmp = linked;
+	if (ft_lstsize(linked) <= 2)
+		exit(1);
 	while (tmp)
 	{
 		if (!is_valid((char *)tmp->data))
@@ -62,12 +64,12 @@ void	switch_int(t_list **stack_a)
 
 	curr = *stack_a;
 	while (curr)
-	{	
+	{
 		i = ft_atoi((char *)curr->data);
 		free(curr->data);
 		curr->data = malloc(sizeof(int));
 		if (!(curr->data))
-		{	
+		{
 			printf("eeeee");
 			return ;
 		}
@@ -109,7 +111,6 @@ int	main(int ac, char **av)
 		return ((write(1, error, 7)), 0);
 	switch_int(&stack_a);
 	sort_index(stack_a);
-	sort_big(&stack_a, &stack_b, size);
 	size = ft_lstsize(stack_a);
 	if (size <= 4 && size >= 46)
 		insertion_sort(&stack_a, &stack_b);

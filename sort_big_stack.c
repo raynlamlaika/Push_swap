@@ -6,40 +6,13 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 22:47:32 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/09 08:09:01 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/10 10:43:10 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// implemment the sorting index
-int	sort_index(t_list *lst)
-{
-	t_list	*tmp1;
-	t_list	*tmp2;
-
-	tmp1 = lst;
-	while (tmp1)
-	{
-		tmp1->index = 0;
-		tmp1 = tmp1->next;
-	}
-	tmp1 = lst;
-	while (tmp1)
-	{
-		tmp2 = lst;
-		while (tmp2)
-		{
-			if (*tmp1->data > *tmp2->data)
-				tmp1->index++;
-			tmp2 = tmp2->next;
-		}
-		tmp1 = tmp1->next;
-	}
-	return (1);
-}
-
-int	value_of_j(t_list **stack)
+static int	value_of_j(t_list **stack)
 {
 	int	j;
 	int	list_size;
@@ -55,7 +28,7 @@ int	value_of_j(t_list **stack)
 	return (j);
 }
 
-void	set_position(t_list *stack)
+static void	set_position(t_list *stack)
 {
 	t_list	*curr;
 	int		i;
@@ -70,7 +43,7 @@ void	set_position(t_list *stack)
 	}
 }
 
-void	move_back_to_a(t_list **a, t_list **b, int size_of_stack)
+static void	move_back_to_a(t_list **a, t_list **b, int size_of_stack)
 {
 	int	max_node_position;
 

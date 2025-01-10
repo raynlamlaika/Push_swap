@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 22:51:37 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/09 08:46:43 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/10 10:30:04 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	*ft_strchr(const char *str, int c)
 	return (NULL);
 }
 
-char	*check(char const *s1, char const *s2)
+char	*checkgnl(char const *s1, char const *s2)
 {
 	char	*p;
 
@@ -78,7 +78,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!s1 && !s2)
 		return (0);
 	if ((!s1 && s2) || (!s2 && s1))
-		return (check(s1, s2));
+		return (checkgnl(s1, s2));
 	i = ft_strlen(s1)+ ft_strlen(s2);
 	ptr = (char *) malloc((i + 1) * sizeof(char));
 	if (!ptr)
@@ -97,14 +97,4 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	ptr[i] = '\0';
 	return (ptr);
-}
-
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
 }

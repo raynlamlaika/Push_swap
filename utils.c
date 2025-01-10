@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 21:02:06 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/07 15:56:47 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/10 14:57:09 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,44 +65,25 @@ int	ft_isdigit(int c)
 
 int	is_valid(char *str)
 {
-	if (!str || !*str)
+	int	i;
+	int	j;
+
+	i = 0;
+	if (!str || !str[i])
 		return (0);
-	if (*str == '-' || *str == '+')
-		str++;
-	while (*str)
+	while (*str == '-' || *str == '+')
 	{
-		if (!ft_isdigit(*str))
+		str++;
+		i++;
+	}
+	j = 0;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
 			return (0);
-		str++;
+		j++;i++;
 	}
-	return (1);
-}
-
-t_list	*ft_lstnew(void *content)
-{
-	t_list	*p;
-
-	p = (t_list *)malloc(sizeof(t_list));
-	if (!p)
+	if (j < 1)
 		return (0);
-	p->data = content;
-	p->next = NULL;
-	return (p);
-}
-
-void	ft_lstadd_back(t_list **lst, t_list *new)
-{
-	t_list	*p;
-
-	if (!lst || !new)
-		return ;
-	if (*lst == NULL)
-	{
-		*lst = new;
-		return ;
-	}
-	p = *lst;
-	while (p->next)
-		p = p->next;
-	p->next = new;
+	return (1);
 }
