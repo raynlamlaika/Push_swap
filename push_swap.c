@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/10 14:44:57 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/10 20:32:15 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,22 +78,40 @@ void	switch_int(t_list **stack_a)
 	}
 }
 
-//check nodes if this in doubles deffenoition in nodes
-void	write_list(t_list *list)
+int check_double(t_list **stack)
 {
-	int	i;
+	t_list	*tmp;
+	t_list	*pass;
 
-	i = 0;
-	while (list)
+	tmp = *stack;
+	while (tmp)
 	{
-		printf("-->%d", *list->data);
-		printf("index :-->%d\n", list->index);
-		i++;
-		list = list->next;
+		pass = tmp->next;
+		while (pass)
+		{
+			if (*(tmp->data) == *(pass->data))
+				return (0);
+			pass = pass->next;
+		}
+		tmp = tmp->next;
 	}
-	putstr("\n");
+	return (1);
 }
 
+// int sort_check(t_list **stack_a)
+// {
+// 	t_list *tmp;
+
+// 	tmp =(*stack_a)->next;
+// 	while (*stack_a || tmp)
+// 	{
+// 		tmp =(*stack_a)->next;
+// 		while (tmp->data > *(*stack_a)->data)
+			
+
+// 	}
+// 	return (1);
+// }
 int	main(int ac, char **av)
 {
 	t_list	*stack_a;
@@ -109,7 +127,13 @@ int	main(int ac, char **av)
 	o = check(stack_a);
 	if (o == 0)
 		return ((write(1, error, 7)), 0);
+	o = check_double(&stack_a);
+	if(o == 0)
+		return ((write(1, error, 7)), 0);
 	switch_int(&stack_a);
+	o = sort_check(&stack_a);
+	if(o == 0)
+		return ((write(1, error, 7)), 0);
 	sort_index(stack_a);
 	size = ft_lstsize(stack_a);
 	if (size <= 4 && size >= 46)
