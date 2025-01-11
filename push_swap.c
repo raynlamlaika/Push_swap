@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/10 20:32:15 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/11 11:45:58 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,20 +98,22 @@ int check_double(t_list **stack)
 	return (1);
 }
 
-// int sort_check(t_list **stack_a)
-// {
-// 	t_list *tmp;
+int sort_check(t_list **stack_a)
+{
+	t_list *tmp;
+	t_list *nexx;
 
-// 	tmp =(*stack_a)->next;
-// 	while (*stack_a || tmp)
-// 	{
-// 		tmp =(*stack_a)->next;
-// 		while (tmp->data > *(*stack_a)->data)
-			
+	tmp = *stack_a;
+	nexx = tmp->next;
+	while (tmp->next)
+	{
+		if (*tmp->data > *tmp->next->data)
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
+}
 
-// 	}
-// 	return (1);
-// }
 int	main(int ac, char **av)
 {
 	t_list	*stack_a;
