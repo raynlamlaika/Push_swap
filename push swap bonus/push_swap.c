@@ -6,21 +6,11 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/12 13:27:27 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/11 16:43:36 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	freed(t_list *lst)
-{
-	while (lst)
-	{
-		free(lst->data);
-		lst = lst->next;
-	}
-	free(lst);
-}
 
 void	spliting_input(int ac, char **av, t_list **linked)
 {
@@ -80,7 +70,7 @@ void	switch_int(t_list **stack_a)
 		curr->data = malloc(sizeof(int));
 		if (!(curr->data))
 		{
-			freed(curr);
+			printf("eeeee");
 			return ;
 		}
 		*(int *)(curr->data) = i;
@@ -88,68 +78,42 @@ void	switch_int(t_list **stack_a)
 	}
 }
 
-int check_double(t_list **stack)
-{
-	t_list	*tmp;
-	t_list	*pass;
+// //check nodes if this in doubles deffenoition in nodes
+// void	write_list(t_list *list)
+// {
+// 	int	i;
 
-	tmp = *stack;
-	while (tmp)
-	{
-		pass = tmp->next;
-		while (pass)
-		{
-			if (*(tmp->data) == *(pass->data))
-				return (0);
-			pass = pass->next;
-		}
-		tmp = tmp->next;
-	}
-	return (1);
-}
+// 	i = 0;
+// 	while (list)
+// 	{
+// 		printf("-->%d", *list->data);
+// 		printf("index :-->%d\n", list->index);
+// 		i++;
+// 		list = list->next;
+// 	}
+// 	putstr("\n");
+// }
 
-int sort_check(t_list **stack_a)
-{
-	t_list *tmp;
-	t_list *nexx;
+// int	main(int ac, char **av)
+// {
+// 	t_list	*stack_a;
+// 	t_list	*stack_b;
+// 	char	*error;
+// 	int		o;
+// 	int		size;
 
-	tmp = *stack_a;
-	nexx = tmp->next;
-	while (tmp->next)
-	{
-		if (*tmp->data > *tmp->next->data)
-			return (1);
-		tmp = tmp->next;
-	}
-	return (0);
-}
-
-int	main(int ac, char **av)
-{
-	t_list	*stack_a;
-	t_list	*stack_b;
-	char	*error;
-	int		o;
-	int		size;
-
-	error = "Error\n";
-	stack_a = NULL;
-	stack_b = NULL;
-	spliting_input(ac, av, &stack_a);
-	o = check(stack_a);
-	if (o == 0)
-		return ((write(1, error, 7)), 0);
-	o = check_double(&stack_a);
-	if(o == 0)
-		return ((write(1, error, 7)), 0);
-	switch_int(&stack_a);
-	o = sort_check(&stack_a);
-	if(o == 0)
-		return ((write(1, error, 7)), 0);
-	sort_index(stack_a);
-	size = ft_lstsize(stack_a);
-	if (size <= 4 && size >= 46)
-		insertion_sort(&stack_a, &stack_b);
-	else
-		sort_big(&stack_a, &stack_b, size);
-}
+// 	error = "Error\n";
+// 	stack_a = NULL;
+// 	stack_b = NULL;
+// 	spliting_input(ac, av, &stack_a);
+// 	o = check(stack_a);
+// 	if (o == 0)
+// 		return ((write(1, error, 7)), 0);
+// 	switch_int(&stack_a);
+// 	sort_index(stack_a);
+// 	size = ft_lstsize(stack_a);
+// 	if (size <= 4 && size >= 46)
+// 		insertion_sort(&stack_a, &stack_b);
+// 	else
+// 		sort_big(&stack_a, &stack_b, size);
+// }
