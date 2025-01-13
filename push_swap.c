@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/13 21:39:09 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/13 23:35:49 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,27 @@ void	freed(t_list *lst)
 	free(lst);
 }
 
-void	spliting_input(int ac, char **av, t_list **linked)
+void	clean_2(char **ptr)
+{
+	int	i;
+
+	i = 0;
+	if (!ptr)
+		return ;
+	while (ptr[i])
+	{
+		free(ptr[i]);
+		ptr[i] = NULL;
+		i++;
+	}
+	free(ptr);
+	ptr = NULL;
+}
+
+void	spliting_input(int ac, char **av, t_list **linked,char	**gone)
 {
 	int		i;
 	int		j;
-	char	**gone;
 	int		l;
 	t_list	*lst;
 
@@ -37,8 +53,7 @@ void	spliting_input(int ac, char **av, t_list **linked)
 		l = 0;
 		while (gone[l])
 		{
-			lst = ft_lstnew(gone[l]);
-			free(gone[l++]);
+			lst = ft_lstnew(gone[l++]);
 			if (!lst)
 			{
 				freed(lst);
@@ -46,7 +61,6 @@ void	spliting_input(int ac, char **av, t_list **linked)
 			}
 			ft_lstadd_back(linked, lst);
 		}
-		free(gone);
 	}
 }
 
@@ -128,11 +142,12 @@ int	main(int ac, char **av)
 	char	*error;
 	int		o;
 	int		size;
+	char	**gone;
 
 	error = "Error\n";
 	stack_a = NULL;
 	stack_b = NULL;
-	spliting_input(ac, av, &stack_a);
+	spliting_input(ac, av, &stack_a, gone);
 	o = check(stack_a);
 	if (o == 0)
 		return (freed(stack_a), (write(1, error, 7)), 0);

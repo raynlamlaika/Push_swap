@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:24 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/13 12:17:43 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/13 23:19:26 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_list	*ft_lstlast(t_list *lst);
 int		reverse_rotate_b(t_list **stack_b);
 void	reverse_rotate_ab(t_list **stack_a, t_list **stack_b);
 void	push_b(t_list **stack_b, t_list **stack_a);
-void	spliting_input(int ac, char **av, t_list **linked);
+void	spliting_input(int ac, char **av, t_list **linked, char **gone);
 int		check(t_list *linked);
 int		putstr(char *string);
 void	switch_int(t_list **stack_a);
