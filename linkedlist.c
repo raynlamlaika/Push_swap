@@ -6,13 +6,12 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 13:41:19 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/10 10:31:40 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/13 20:11:52 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// implemment the sorting index
 int	sort_index(t_list *lst)
 {
 	t_list	*tmp1;

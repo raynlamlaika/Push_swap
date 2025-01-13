@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/13 18:43:18 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/13 21:39:09 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,16 @@ void	spliting_input(int ac, char **av, t_list **linked)
 		l = 0;
 		while (gone[l])
 		{
-			lst = ft_lstnew(gone[l++]);
+			lst = ft_lstnew(gone[l]);
+			free(gone[l++]);
 			if (!lst)
 			{
-				j = 0;
-				while (gone[j])
-					free(gone[j++]);
-				free(gone);
+				freed(lst);
 				return ;
 			}
 			ft_lstadd_back(linked, lst);
 		}
+		free(gone);
 	}
 }
 
@@ -57,7 +56,7 @@ int	check(t_list *linked)
 
 	tmp = linked;
 	if (ft_lstsize(linked) < 2)
-		exit (0);
+		return (freed(linked), 0);
 	while (tmp)
 	{
 		if (!is_valid((char *)tmp->data))
@@ -101,7 +100,6 @@ int	check_double(t_list **stack)
 		{
 			if (*(tmp->data) == *(pass->data))
 				return (0);
-				
 			pass = pass->next;
 		}
 		tmp = tmp->next;
@@ -155,4 +153,5 @@ int	main(int ac, char **av)
 		sort_small_stack(&stack_a, &stack_b);
 	else
 		sort_big(&stack_a, &stack_b);
+	freed(stack_a);
 }
