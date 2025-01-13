@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/13 18:43:18 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/13 17:00:49 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	switch_int(t_list **stack_a)
 	}
 }
 
-int	check_double(t_list **stack)
+int check_double(t_list **stack)
 {
 	t_list	*tmp;
 	t_list	*pass;
@@ -109,9 +109,12 @@ int	check_double(t_list **stack)
 	return (1);
 }
 
-int	sort_check(t_list **stack_a)
+int sort_check(t_list **stack_a)
 {
-	t_list	*tmp;
+	t_list *tmp;
+
+	if (!(stack_a))
+		return (write (1, "pointer are losed",  18), 0);
 
 	tmp = *stack_a;
 	while (tmp->next)
@@ -121,38 +124,4 @@ int	sort_check(t_list **stack_a)
 		tmp = tmp->next;
 	}
 	return (0);
-}
-
-int	main(int ac, char **av)
-{
-	t_list	*stack_a;
-	t_list	*stack_b;
-	char	*error;
-	int		o;
-	int		size;
-
-	error = "Error\n";
-	stack_a = NULL;
-	stack_b = NULL;
-	spliting_input(ac, av, &stack_a);
-	o = check(stack_a);
-	if (o == 0)
-		return (freed(stack_a), (write(1, error, 7)), 0);
-	switch_int(&stack_a);
-	o = check_double(&stack_a);
-	if(o == 0)
-		return (freed(stack_a), (write(1, error, 7)), 0);
-	o = sort_check(&stack_a);
-	if(o == 0)
-		return (freed(stack_a), (write(1, error, 7)), 0);
-	sort_index(stack_a);
-	size = ft_lstsize(stack_a);
-	if (size == 2)
-		swap_a(&stack_a);
-	else if (size == 3 )
-		sort_three(&stack_a);
-	else if (size > 2 && size <= 10)
-		sort_small_stack(&stack_a, &stack_b);
-	else
-		sort_big(&stack_a, &stack_b);
 }

@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 22:47:32 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/13 18:40:21 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/13 12:17:38 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ static void	move_back_to_a(t_list **a, t_list **b, int size_of_stack)
 	}
 }
 
+//the main function to sort the big stack
 void	sort_big(t_list **stack_a, t_list **stack_b)
 {
 	int	i;
@@ -81,7 +82,9 @@ void	sort_big(t_list **stack_a, t_list **stack_b)
 			i++;
 		}
 		else
+		{
 			rotate_a(stack_a);
+		}
 	}
 	move_back_to_a(stack_a, stack_b, ft_lstsize(*stack_b));
 }
