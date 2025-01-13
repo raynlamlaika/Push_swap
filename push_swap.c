@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/12 13:27:27 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/13 12:17:53 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ int	check(t_list *linked)
 	t_list	*tmp;
 
 	tmp = linked;
-	if (ft_lstsize(linked) <= 2)
-		exit(1);
+	if (ft_lstsize(linked) < 2)
+		exit (0);
 	while (tmp)
 	{
 		if (!is_valid((char *)tmp->data))
@@ -101,6 +101,7 @@ int check_double(t_list **stack)
 		{
 			if (*(tmp->data) == *(pass->data))
 				return (0);
+				
 			pass = pass->next;
 		}
 		tmp = tmp->next;
@@ -111,10 +112,8 @@ int check_double(t_list **stack)
 int sort_check(t_list **stack_a)
 {
 	t_list *tmp;
-	t_list *nexx;
 
 	tmp = *stack_a;
-	nexx = tmp->next;
 	while (tmp->next)
 	{
 		if (*tmp->data > *tmp->next->data)
@@ -139,17 +138,23 @@ int	main(int ac, char **av)
 	o = check(stack_a);
 	if (o == 0)
 		return ((write(1, error, 7)), 0);
+	switch_int(&stack_a);
 	o = check_double(&stack_a);
 	if(o == 0)
 		return ((write(1, error, 7)), 0);
-	switch_int(&stack_a);
+	
 	o = sort_check(&stack_a);
 	if(o == 0)
 		return ((write(1, error, 7)), 0);
 	sort_index(stack_a);
 	size = ft_lstsize(stack_a);
-	if (size <= 4 && size >= 46)
-		insertion_sort(&stack_a, &stack_b);
+
+	if (size == 2)
+		swap_a(&stack_a);
+	else if (size == 3 )
+		sort_three(&stack_a);
+	else if (size > 2 && size <= 10)
+		sort_small_stack(&stack_a, &stack_b);
 	else
-		sort_big(&stack_a, &stack_b, size);
+		sort_big(&stack_a, &stack_b);
 }

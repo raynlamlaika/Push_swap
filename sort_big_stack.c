@@ -6,26 +6,19 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 22:47:32 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/10 10:43:10 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/13 12:17:38 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	value_of_j(t_list **stack)
+static int	chunksize(t_list **stack_a)
 {
 	int	j;
 	int	list_size;
 
-	list_size = ft_lstsize(*stack) - 1;
-	j = 0;
-	if (list_size > 100)
-		return (j = 35);
-	else if (list_size < 100)
-		return (j = 15);
-	else
-		return (j = 20);
-	return (j);
+	list_size = ft_lstsize(*stack_a) - 1;
+	return (j =list_size / 10);
 }
 
 static void	set_position(t_list *stack)
@@ -68,13 +61,13 @@ static void	move_back_to_a(t_list **a, t_list **b, int size_of_stack)
 }
 
 //the main function to sort the big stack
-void	sort_big(t_list **stack_a, t_list **stack_b, int size)
+void	sort_big(t_list **stack_a, t_list **stack_b)
 {
 	int	i;
 	int	chunk;
 
 	i = 0;
-	chunk = 34;
+	chunk = chunksize(stack_a);
 	while ((*stack_a))
 	{
 		if ((*stack_a)->index <= i)

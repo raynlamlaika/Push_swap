@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 04:51:14 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/06 16:08:46 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/13 12:17:13 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,8 @@ static size_t	lenght(char const *str, char c)
 static char	*ft_strncpy(char *dest, const char *src, size_t n)
 {
 	size_t	i;
-	size_t	srclen;
 
 	i = 0;
-	srclen = ft_strlen(src);
 	if (!src || !dest)
 		return (0);
 	while (i < n)
@@ -86,7 +84,7 @@ static char	**intotowdarray(char const*s, char c, char**p, size_t*index)
 			p[*index] = (char *) malloc(sizeof(char) * (words + 1));
 			if (!p)
 			{
-				while (index > 0)
+				while ((*index) > 0)
 					free(p[(*index)--]);
 				free (p);
 				return (0);
