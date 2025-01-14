@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/14 11:36:39 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/13 17:00:49 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,21 @@
 
 void	freed(t_list *lst)
 {
-	t_list*	tmp;
-	if (!lst)
-		return ;
 	while (lst)
 	{
-		tmp = lst->next;
 		free(lst->data);
-		free(lst);
-		lst = tmp;
+		lst = lst->next;
 	}
-
-}
-
-void	clean_2(char **ptr)
-{
-	int	i;
-
-	i = 0;
-	if (!ptr)
-		return ;
-	while (ptr[i])
-	{
-		free(ptr[i]);
-		ptr[i] = NULL;
-		i++;
-	}
-	free(ptr);
-	ptr = NULL;
+	free(lst);
 }
 
 void	spliting_input(int ac, char **av, t_list **linked)
 {
 	int		i;
 	int		j;
+	char	**gone;
 	int		l;
 	t_list	*lst;
-	char **gone;
 
 	i = 1;
 	while (ac > i)
@@ -62,13 +40,14 @@ void	spliting_input(int ac, char **av, t_list **linked)
 			lst = ft_lstnew(gone[l++]);
 			if (!lst)
 			{
-				clean_2(gone);
-				freed(*linked);
+				j = 0;
+				while (gone[j])
+					free(gone[j++]);
+				free(gone);
 				return ;
 			}
 			ft_lstadd_back(linked, lst);
 		}
-		free(gone);
 	}
 }
 
@@ -78,7 +57,7 @@ int	check(t_list *linked)
 
 	tmp = linked;
 	if (ft_lstsize(linked) < 2)
-		return (freed(linked), 0);
+		exit (0);
 	while (tmp)
 	{
 		if (!is_valid((char *)tmp->data))
@@ -101,7 +80,7 @@ void	switch_int(t_list **stack_a)
 		curr->data = malloc(sizeof(int));
 		if (!(curr->data))
 		{
-			freed(*stack_a);
+			freed(curr);
 			return ;
 		}
 		*(int *)(curr->data) = i;
@@ -109,7 +88,7 @@ void	switch_int(t_list **stack_a)
 	}
 }
 
-int	check_double(t_list **stack)
+int check_double(t_list **stack)
 {
 	t_list	*tmp;
 	t_list	*pass;
@@ -121,7 +100,8 @@ int	check_double(t_list **stack)
 		while (pass)
 		{
 			if (*(tmp->data) == *(pass->data))
-				return (freed(*stack),0);
+				return (0);
+				
 			pass = pass->next;
 		}
 		tmp = tmp->next;
@@ -129,9 +109,12 @@ int	check_double(t_list **stack)
 	return (1);
 }
 
-int	sort_check(t_list **stack_a)
+int sort_check(t_list **stack_a)
 {
-	t_list	*tmp;
+	t_list *tmp;
+
+	if (!(stack_a))
+		return (write (1, "pointer are losed",  18), 0);
 
 	tmp = *stack_a;
 	while (tmp->next)
@@ -141,41 +124,4 @@ int	sort_check(t_list **stack_a)
 		tmp = tmp->next;
 	}
 	return (0);
-}
-
-int	main(int ac, char **av)
-{
-	t_list	*stack_a;
-	t_list	*stack_b;
-	char	*error;
-	int		o;
-	int		size;
-
-	error = "Error\n";
-	stack_a = NULL;
-	stack_b = NULL;
-	spliting_input(ac, av, &stack_a);
-	o = check(stack_a);
-	if (o == 0)
-		return (freed(stack_a),(write(1, error, 7)), 0);
-	switch_int(&stack_a);
-	o = check_double(&stack_a);
-	if(o == 0)
-		return (freed(stack_a),(write(1, error, 7)), 0);
-	o = sort_check(&stack_a);
-	if(o == 0)
-		return (freed(stack_a),(write(1, error, 7)), 0);
-	sort_index(stack_a);
-	size = ft_lstsize(stack_a);
-	if (size == 2)
-		swap_a(&stack_a);
-	else if (size == 3 )
-		sort_three(&stack_a);
-	else if (size > 2 && size <= 10)
-		sort_small_stack(&stack_a, &stack_b);
-	else
-		sort_big(&stack_a, &stack_b);
-	freed(stack_a);
-	freed(stack_b);
-	// you ned to handel ¨¨ and l
 }

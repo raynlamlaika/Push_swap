@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:24 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/14 10:39:15 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/13 13:49:34 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,7 @@ t_list	*find_min(t_list *stack_a);
 int		nbt_rotations_needed(t_list *stack_a, t_list *min);
 void	sort_small_stack(t_list **stack_a, t_list **stack_b);
 void	sort_three(t_list **stack);
+int		check_double(t_list **stack);
+int sort_check(t_list **stack_a);
 
 #endif
