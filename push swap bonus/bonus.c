@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 17:19:31 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/13 17:12:28 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/15 19:37:58 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,19 +72,6 @@ static int	take_line(char **str, t_list **stack_a, t_list **stack_b)
 	return (1);
 }
 
-void write_list(t_list *list)
-{
-	int  i;
-
-	i = 0;
-	while(list)
-	{
-		printf("-->%d",*list->data);
-		i++;
-		list=list->next;
-	}
-	printf("\n");
-}
 int	main(int ac, char **av)
 {
 	t_list	*stack_a;
@@ -92,9 +79,10 @@ int	main(int ac, char **av)
 	char	*error;
 	int		o;
 	int		size;
-	char	*line;
-	char	*tmp;
 	char	**moves;
+	char	*operation;
+	char	*tmpp;
+	char	*next;
 
 	error = "Error\n";
 	stack_a = NULL;
@@ -102,39 +90,44 @@ int	main(int ac, char **av)
 	spliting_input(ac, av, &stack_a);
 	o = check(stack_a);
 	if (o == 0)
-		return ((write(1, error, 7)), 0);
+		return (freed(stack_a), (write(1, error, 7)), 0);
+	if (o == 2)
+		return (freed(stack_a), 0);
+	switch_int(&stack_a);
 	o = check_double(&stack_a);
 	if (o == 0)
 		return ((write(1, error, 7)), 0);
-	switch_int(&stack_a);
 	o = sort_check(&stack_a);
 	if (o == 0)
-		return ((write(1, error, 7)), 0);
-	char	*operation;
-	char	*tmpp;
-	char	*next;
+		return (freed(stack_a), (write(1, error, 7)), 0);
 	operation = ft_strdup("");
 	if (!operation)
-		return (0);
+		return (free(operation) ,0);
 	next = get_next_line(0);
+	if (!next)
+		return (freed(stack_a), free(next), (write(1, error, 7)), 0);
 	while (next)
 	{
 		tmpp = operation;
 		operation = ft_strjoin(operation, next);
 		if (!operation)
-			return (0);
-		(free(tmpp), free(next));
+			return (freed(stack_a),free(operation), 0);
+		free(tmpp);
+		free(next);
 		next = get_next_line(0);
 	}
 	moves = ft_split(operation, '\n');
+	free(operation);
 	o = 0;
-	take_line(moves, &stack_a, &stack_b);
+	o = take_line(moves, &stack_a, &stack_b);
+	if (o == 0)
+		return (freed(stack_a), free(next), 0);
 	t_list *iii = stack_a;
 	o = sort_check(&iii);
-	write_list(iii);
+	clean_2(moves);
+	free(next);
 	if (o == 0)
-		return (putstr("OK\n"), 1);
+		return (freed(stack_a), putstr("OK\n"), 1);
 	if (o == 1)
-		return (putstr("KO\n"), 1);
-
+		return (freed(stack_a), putstr("KO\n"), 1);
 }

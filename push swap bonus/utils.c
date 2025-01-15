@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 21:02:06 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/10 14:57:09 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/15 14:00:18 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,17 +71,15 @@ int	is_valid(char *str)
 	i = 0;
 	if (!str || !str[i])
 		return (0);
-	while (*str == '-' || *str == '+')
-	{
-		str++;
+	while (str[i] == '-' || str[i] == '+')
 		i++;
-	}
 	j = 0;
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
 			return (0);
-		j++;i++;
+		j++;
+		i++;
 	}
 	if (j < 1)
 		return (0);

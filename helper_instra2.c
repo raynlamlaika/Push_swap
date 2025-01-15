@@ -1,30 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   insertion_sort_helper.c                            :+:      :+:    :+:   */
+/*   helper_instra2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 10:09:31 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/13 17:04:02 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/15 12:25:18 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*ft_lstnew(void *content)
-{
-	t_list	*p;
-
-	p = (t_list *)malloc(sizeof(t_list));
-	if (!p)
-		return (0);
-	p->data = content;
-	p->next = NULL;
-	return (p);
-}
-
-//find the most small number in stack
 t_list	*find_min(t_list *stack_a)
 {
 	t_list	*min_in_stack;
@@ -39,7 +26,6 @@ t_list	*find_min(t_list *stack_a)
 	return (min_in_stack);
 }
 
-//the numer of rotations that we need to pick this smal number in stack
 int	nbt_rotations_needed(t_list *stack_a, t_list *min)
 {
 	int	i;
@@ -65,10 +51,10 @@ int	rotate_a(t_list **stack_a)
 	last = ft_lstlast(*stack_a);
 	last->next = top;
 	top->next = NULL;
+	putstr("ra\n");
 	return (1);
 }
 
-//rb (rotate b): Shift up all elements of stack b by 1.
 int	rotate_b(t_list **stack_b)
 {
 	t_list	*botton;
@@ -81,5 +67,6 @@ int	rotate_b(t_list **stack_b)
 	botton = ft_lstlast(*stack_b);
 	botton->next = top;
 	top->next = NULL;
+	putstr("rb\n");
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 09:58:42 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/13 17:03:40 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/10 10:20:30 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	reverse_rotate_a(t_list **stack_a)
 	last->next = *stack_a;
 	*stack_a = last;
 	sec->next = NULL;
+	putstr("rra\n");
 	return (1);
 }
 
@@ -41,6 +42,7 @@ int	reverse_rotate_b(t_list **stack_b)
 	last->next = *stack_b;
 	*stack_b = last;
 	sec->next = NULL;
+	putstr("rrb\n");
 	return (1);
 }
 
@@ -49,4 +51,5 @@ void	reverse_rotate_ab(t_list **stack_a, t_list **stack_b)
 {
 	reverse_rotate_a(stack_a);
 	reverse_rotate_b(stack_b);
+	putstr("rrr\n");
 }

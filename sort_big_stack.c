@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 22:47:32 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/13 18:40:21 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/15 12:49:22 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	chunksize(t_list **stack_a)
 	int	list_size;
 
 	list_size = ft_lstsize(*stack_a) - 1;
-	return (j =list_size / 10);
+	return (j = list_size / 10);
 }
 
 static void	set_position(t_list *stack)

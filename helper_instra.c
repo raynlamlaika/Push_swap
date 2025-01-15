@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   insertion_sort.c                                   :+:      :+:    :+:   */
+/*   helper_instra.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 14:54:00 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/13 18:33:36 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/15 12:27:14 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,15 +74,14 @@ void	sort_three(t_list **stack)
 void	sort_small_stack(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*min;
+	int		rotations;
 
 	while (ft_lstsize(*stack_a) > 3)
 	{
 		min = find_min(*stack_a);
-		int rotations = nbt_rotations_needed(*stack_a, min);
-
+		rotations = nbt_rotations_needed(*stack_a, min);
 		if (rotations > ft_lstsize(*stack_a) / 2)
 			rotations -= ft_lstsize(*stack_a);
-
 		rotate_to_top(stack_a, rotations);
 		push_b(stack_b, stack_a);
 	}

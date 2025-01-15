@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 13:41:19 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/13 20:11:52 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/15 12:25:27 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,16 @@ t_list	*ft_lstlast(t_list *lst)
 	while (lst->next)
 		lst = lst->next;
 	return (lst);
+}
+
+t_list	*ft_lstnew(void *content)
+{
+	t_list	*p;
+
+	p = (t_list *)malloc(sizeof(t_list));
+	if (!p)
+		return (0);
+	p->data = content;
+	p->next = NULL;
+	return (p);
 }

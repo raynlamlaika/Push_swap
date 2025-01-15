@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 22:49:07 by rlamlaik          #+#    #+#             */
-/*   Updated: 2024/12/15 04:21:33 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/15 19:02:34 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <limits.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 3
 # endif
 
 char	*get_next_line(int fd);
