@@ -6,11 +6,11 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 10:00:30 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/10 10:31:30 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/17 11:06:18 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 void	push_b(t_list **stack_b, t_list **stack_a)
 {
@@ -22,7 +22,6 @@ void	push_b(t_list **stack_b, t_list **stack_a)
 	*stack_a = (*stack_a)->next;
 	top_a->next = *stack_b;
 	*stack_b = top_a;
-	putstr("pb\n");
 }
 
 //rr : ra and rb at the same time.
@@ -30,7 +29,6 @@ int	rotate_ab(t_list **stack_a, t_list **stack_b)
 {
 	if (!(rotate_a(stack_a)) || !(rotate_b(stack_b)))
 		return (0);
-	putstr("rr\n");
 	return (1);
 }
 

@@ -6,11 +6,11 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:29:00 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/15 18:58:33 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/17 16:03:39 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 int	check(t_list *linked)
 {
@@ -28,9 +28,9 @@ int	check(t_list *linked)
 	return (1);
 }
 
-void	switch_int(t_list **stack_a)
+int	switch_int(t_list **stack_a)
 {
-	int		i;
+	int	i;
 	t_list	*curr;
 
 	curr = *stack_a;
@@ -47,6 +47,7 @@ void	switch_int(t_list **stack_a)
 		*(int *)(curr->data) = i;
 		curr = curr->next;
 	}
+	return (1);
 }
 
 int	check_double(t_list **stack)

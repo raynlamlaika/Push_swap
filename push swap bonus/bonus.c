@@ -6,12 +6,11 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 17:19:31 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/15 19:37:58 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/17 11:15:01 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "get_next_line.h"
+#include "push_swap_bonus.h"
 
 static int	is_passed(char *str, char *sec)
 {
@@ -105,29 +104,30 @@ int	main(int ac, char **av)
 		return (free(operation) ,0);
 	next = get_next_line(0);
 	if (!next)
-		return (freed(stack_a), free(next), (write(1, error, 7)), 0);
+		return (freed(stack_a), free(next), free(operation), (write(1, error, 7)), 0);
 	while (next)
 	{
 		tmpp = operation;
 		operation = ft_strjoin(operation, next);
 		if (!operation)
-			return (freed(stack_a),free(operation), 0);
+			return (freed(stack_a), free(operation), 0);
 		free(tmpp);
 		free(next);
 		next = get_next_line(0);
 	}
 	moves = ft_split(operation, '\n');
 	free(operation);
+	//free(next);
 	o = 0;
 	o = take_line(moves, &stack_a, &stack_b);
 	if (o == 0)
-		return (freed(stack_a), free(next), 0);
+		return (freed(stack_a), freed(stack_b), clean_2(moves),0);
 	t_list *iii = stack_a;
-	o = sort_check(&iii);
 	clean_2(moves);
-	free(next);
-	if (o == 0)
-		return (freed(stack_a), putstr("OK\n"), 1);
-	if (o == 1)
-		return (freed(stack_a), putstr("KO\n"), 1);
+	
+	o = sort_check(&iii);
+	if (o == 0 && ft_lstsize(stack_b) == 0)
+		return (freed(stack_a), freed(stack_b), putstr("OK\n"), 1);
+	if (o == 1 || ft_lstsize(stack_b) > 0)
+		return (freed(stack_a), freed(stack_a), putstr("KO\n"), 1);
 }

@@ -6,13 +6,13 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:47:42 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/10 10:29:36 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/17 10:47:46 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "push_swap_bonus.h"
 
-static void	freed(char **point)
+static void	freedd(char **point)
 {
 	if (*point)
 	{
@@ -34,18 +34,18 @@ static int	readtobuff(int fd, char **buffer)
 	{
 		byts = read(fd, tohold, BUFFER_SIZE);
 		if (byts <= 0)
-			return (freed(&tohold), byts);
+			return (freedd(&tohold), byts);
 		tohold[byts] = '\0';
 		temp = *buffer;
 		*buffer = ft_strjoin(*buffer, tohold);
-		freed(&temp);
+		freedd(&temp);
 		if (!*buffer)
 		{
-			freed(&tohold);
+			freedd(&tohold);
 			return (-1);
 		}
 	}
-	freed(&tohold);
+	freedd(&tohold);
 	return (1);
 }
 
@@ -59,10 +59,10 @@ static void	update_buffer( char **buffer)
 	{
 		temp = *buffer;
 		*buffer = ft_strdup(newline_pos + 1);
-		freed(&temp);
+		freedd(&temp);
 	}
 	else
-		freed(buffer);
+		freedd(buffer);
 }
 
 static char	*extract_line(char *buffer)
@@ -97,12 +97,12 @@ char	*get_next_line(int fd)
 	ssize_t		retu;
 
 	if (BUFFER_SIZE <= 0 || (read(fd, 0, 0)) < 0 || fd < 0)
-		return (freed(&buffer), NULL);
+		return (freedd(&buffer), NULL);
 	retu = readtobuff(fd, &buffer);
 	if (retu <= 0)
 	{
 		if (!buffer || *buffer == '\0')
-			return (freed(&buffer), NULL);
+			return (freedd(&buffer), NULL);
 	}
 	line = extract_line(buffer);
 	update_buffer(&buffer);

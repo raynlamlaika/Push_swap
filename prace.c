@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:29:00 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/15 14:02:21 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/17 14:03:08 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,28 @@ int	check(t_list *linked)
 	return (1);
 }
 
-void	switch_int(t_list **stack_a)
+long	switch_int(t_list **stack_a)
 {
-	int		i;
+	long	i;
 	t_list	*curr;
 
 	curr = *stack_a;
 	while (curr)
 	{
 		i = ft_atoi((char *)curr->data);
+		if (i == 2147483649)
+			return(freed(*stack_a), 0);
 		free(curr->data);
 		curr->data = malloc(sizeof(int));
 		if (!(curr->data))
 		{
 			freed(*stack_a);
-			return ;
+			return (0);
 		}
 		*(int *)(curr->data) = i;
 		curr = curr->next;
 	}
+	return (1);
 }
 
 int	check_double(t_list **stack)

@@ -6,11 +6,11 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 21:02:06 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/15 14:00:18 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/17 13:19:43 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 size_t	ft_strlen(const char *str)
 {
@@ -48,6 +48,8 @@ int	ft_atoi(const char *str)
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
+		if (rs > INT_MAX || rs < INT_MIN)
+			return ();
 		if (rs > ((9223372036854775807 - str[i] - 48)) / 10)
 			return (ft_overflow(sing));
 		rs = rs * 10 + str[i] - '0';

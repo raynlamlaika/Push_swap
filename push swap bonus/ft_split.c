@@ -6,11 +6,11 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 04:51:14 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/13 12:17:13 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/17 10:46:19 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 static size_t	count_word(char const *str, char c)
 {

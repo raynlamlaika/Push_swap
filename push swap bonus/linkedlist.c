@@ -6,37 +6,11 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 13:41:19 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/15 12:25:27 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/17 10:45:53 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-int	sort_index(t_list *lst)
-{
-	t_list	*tmp1;
-	t_list	*tmp2;
-
-	tmp1 = lst;
-	while (tmp1)
-	{
-		tmp1->index = 0;
-		tmp1 = tmp1->next;
-	}
-	tmp1 = lst;
-	while (tmp1)
-	{
-		tmp2 = lst;
-		while (tmp2)
-		{
-			if (*tmp1->data > *tmp2->data)
-				tmp1->index++;
-			tmp2 = tmp2->next;
-		}
-		tmp1 = tmp1->next;
-	}
-	return (1);
-}
+#include "push_swap_bonus.h"
 
 int	ft_lstsize(t_list *lst)
 {

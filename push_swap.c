@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/15 19:38:01 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/17 15:40:28 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,18 +84,21 @@ int	main(int ac, char **av)
 	stack_a = NULL;
 	stack_b = NULL;
 	spliting_input(ac, av, &stack_a);
-	o = check(stack_a);
-	if (o == 0)
+	if (ft_lstsize(stack_a) != (ac - 1))
 		return (freed(stack_a), (write(1, error, 7)), 0);
+	o = check(stack_a);
 	if (o == 2)
 		return (freed(stack_a), 0);
-	switch_int(&stack_a);
+	o = switch_int(&stack_a);
+	if (o == 0)
+		return ((write(1, error, 7)), 0);
+	//printf("jigebvqhe\n");
 	o = check_double(&stack_a);
 	if (o == 0)
 		return ((write(1, error, 7)), 0);
 	o = sort_check(&stack_a);
 	if (o == 0)
-		return (freed(stack_a), (write(1, error, 7)), 0);
+		return (freed(stack_a), 0);
 	sort_index(stack_a);
 	size = ft_lstsize(stack_a);
 	sort(size, stack_a, stack_b);

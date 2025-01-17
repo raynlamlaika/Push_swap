@@ -6,38 +6,11 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 10:09:31 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/15 12:25:18 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/17 11:07:17 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-t_list	*find_min(t_list *stack_a)
-{
-	t_list	*min_in_stack;
-
-	min_in_stack = stack_a;
-	while (stack_a)
-	{
-		if (*(min_in_stack->data) > *(stack_a->data))
-			min_in_stack = stack_a;
-		stack_a = stack_a->next;
-	}
-	return (min_in_stack);
-}
-
-int	nbt_rotations_needed(t_list *stack_a, t_list *min)
-{
-	int	i;
-
-	i = 0;
-	while (stack_a != min)
-	{
-		stack_a = stack_a->next;
-		i++;
-	}
-	return (i);
-}
+#include "push_swap_bonus.h"
 
 int	rotate_a(t_list **stack_a)
 {
@@ -51,7 +24,6 @@ int	rotate_a(t_list **stack_a)
 	last = ft_lstlast(*stack_a);
 	last->next = top;
 	top->next = NULL;
-	putstr("ra\n");
 	return (1);
 }
 
@@ -67,6 +39,5 @@ int	rotate_b(t_list **stack_b)
 	botton = ft_lstlast(*stack_b);
 	botton->next = top;
 	top->next = NULL;
-	putstr("rb\n");
 	return (1);
 }
