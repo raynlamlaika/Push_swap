@@ -6,13 +6,12 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:24 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/17 10:44:08 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/17 23:23:50 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_BONUS_H
 # define PUSH_SWAP_BONUS_H
-
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 3
@@ -66,5 +65,7 @@ int		check_double(t_list **stack);
 void	freed(t_list *lst);
 void	clean_2(char **ptr);
 int		sort_check(t_list **stack_a);
+int		move(int i, t_list **stack_a, t_list **stack_b, char *str);
+int		is_passed(char *str, char *sec);
 
 #endif

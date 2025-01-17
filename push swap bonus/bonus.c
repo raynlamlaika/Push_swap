@@ -6,54 +6,11 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 17:19:31 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/17 11:15:01 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/17 23:24:16 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
-
-static int	is_passed(char *str, char *sec)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] || sec[i])
-	{
-		if (str[i] != sec[i])
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-static int	move(int i, t_list **stack_a, t_list **stack_b, char *str)
-{
-	if (is_passed(str, "pa"))
-		push_a(stack_a, stack_b);
-	else if (is_passed(str, "sa"))
-		swap_a(stack_a);
-	else if (is_passed(str, "sb"))
-		swap_b(stack_b);
-	else if (is_passed(str, "ss"))
-		swap_ab(stack_b, stack_a);
-	else if (is_passed(str, "pb"))
-		push_b(stack_b, stack_a);
-	else if (is_passed(str, "ra"))
-		rotate_a(stack_a);
-	else if (is_passed(str, "rb"))
-		rotate_b(stack_b);
-	else if (is_passed(str, "rr"))
-		rotate_ab(stack_a, stack_b);
-	else if (is_passed(str, "rra"))
-		reverse_rotate_a(stack_a);
-	else if (is_passed(str, "rrb"))
-		reverse_rotate_b(stack_b);
-	else if (is_passed(str, "rrr"))
-		reverse_rotate_ab(stack_a, stack_b);
-	else
-		return (write(2, "Error\n", 7), 0);
-	return (1);
-}
 
 static int	take_line(char **str, t_list **stack_a, t_list **stack_b)
 {
@@ -71,63 +28,79 @@ static int	take_line(char **str, t_list **stack_a, t_list **stack_b)
 	return (1);
 }
 
-int	main(int ac, char **av)
+void	*parce(int ac, char **av, int o, t_list *stack_a)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
-	char	*error;
-	int		o;
-	int		size;
-	char	**moves;
-	char	*operation;
-	char	*tmpp;
-	char	*next;
-
-	error = "Error\n";
-	stack_a = NULL;
-	stack_b = NULL;
 	spliting_input(ac, av, &stack_a);
 	o = check(stack_a);
 	if (o == 0)
-		return (freed(stack_a), (write(1, error, 7)), 0);
+		return (freed(stack_a), (write(1, "Error\n", 7)), NULL);
 	if (o == 2)
-		return (freed(stack_a), 0);
+		return (freed(stack_a), NULL);
 	switch_int(&stack_a);
 	o = check_double(&stack_a);
 	if (o == 0)
-		return ((write(1, error, 7)), 0);
+		return (freed(stack_a), (write(1, "Error\n", 7)), NULL);
 	o = sort_check(&stack_a);
 	if (o == 0)
-		return (freed(stack_a), (write(1, error, 7)), 0);
+		return (freed(stack_a), (write(1, "Error\n", 7)), NULL);
+	return (stack_a);
+}
+
+int	final_result(t_list *stack_a, t_list *stack_b, char*error, int o)
+{
+	if (o == 0 && ft_lstsize(stack_b) == 0)
+		return (freed(stack_a), freed(stack_b), putstr("OK\n"), 1);
+	if (o == 1 || ft_lstsize(stack_b) > 0)
+		return (freed(stack_a), freed(stack_b), putstr("KO\n"), 1);
+	return (1);
+}
+
+char	**moooves(t_list *stack_a, char *error)
+{
+	char	**moves;
+	char	*tmpp;
+	char	*next;
+	char	*operation;
+
 	operation = ft_strdup("");
 	if (!operation)
-		return (free(operation) ,0);
+		return (free(operation), freed(stack_a), NULL);
 	next = get_next_line(0);
 	if (!next)
-		return (freed(stack_a), free(next), free(operation), (write(1, error, 7)), 0);
+		return (freed(stack_a), free(next), \
+		free(operation), (write(1, error, 7)), NULL);
 	while (next)
 	{
 		tmpp = operation;
 		operation = ft_strjoin(operation, next);
 		if (!operation)
-			return (freed(stack_a), free(operation), 0);
+			return (freed(stack_a), free(operation), NULL);
 		free(tmpp);
 		free(next);
 		next = get_next_line(0);
 	}
 	moves = ft_split(operation, '\n');
-	free(operation);
-	//free(next);
+	return (free(operation), free(next), moves);
+}
+
+int	main(int ac, char **av)
+{
+	t_list	*stack_a;
+	t_list	*stack_b;
+	t_list	*ii;
+	int		o;
+	char	**moves;
+
+	stack_a = parce(ac, av, o, stack_a);
+	if (!stack_a)
+		return (0);
 	o = 0;
+	moves = moooves(stack_a, "Error\n");
 	o = take_line(moves, &stack_a, &stack_b);
 	if (o == 0)
-		return (freed(stack_a), freed(stack_b), clean_2(moves),0);
-	t_list *iii = stack_a;
+		return (freed(stack_a), freed(stack_b), clean_2(moves), 0);
 	clean_2(moves);
-	
-	o = sort_check(&iii);
-	if (o == 0 && ft_lstsize(stack_b) == 0)
-		return (freed(stack_a), freed(stack_b), putstr("OK\n"), 1);
-	if (o == 1 || ft_lstsize(stack_b) > 0)
-		return (freed(stack_a), freed(stack_a), putstr("KO\n"), 1);
+	ii = stack_a;
+	o = sort_check(&ii);
+	return (final_result(stack_a, stack_b, "Error\n", o));
 }

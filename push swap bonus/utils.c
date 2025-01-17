@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 21:02:06 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/17 13:19:43 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/17 23:17:47 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,13 @@ int	ft_atoi(const char *str)
 {
 	int		i;
 	int		sing;
-	long	rs;
+	int		rs;
+	long	check_overflow;
 
 	i = 0;
 	rs = 0;
 	sing = 1;
-	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
+	while (str[i] == 32)
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
@@ -48,10 +49,12 @@ int	ft_atoi(const char *str)
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		if (rs > INT_MAX || rs < INT_MIN)
-			return ();
-		if (rs > ((9223372036854775807 - str[i] - 48)) / 10)
-			return (ft_overflow(sing));
+		check_overflow = ((long long)(rs * 10) + (str[i] - '0')) * (long long)sing;
+		if ((check_overflow > 2147483647) || (check_overflow < -2147483648))
+		{
+			write(1, "Error\n", 7);
+			exit(EXIT_FAILURE);
+		}
 		rs = rs * 10 + str[i] - '0';
 		i++;
 	}

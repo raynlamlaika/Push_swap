@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:24 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/17 16:03:23 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/17 20:15:41 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	push_b(t_list **stack_b, t_list **stack_a);
 void	spliting_input(int ac, char **av, t_list **linked);
 int		check(t_list *linked);
 int		putstr(char *string);
-int		switch_int(t_list **stack_a);
+void	switch_int(t_list **stack_a);
 int		sort_index(t_list *lst);
 void	sort_big(t_list **stack_a, t_list **stack_b);
 t_list	*find_min(t_list *stack_a);

@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/17 15:40:28 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/17 20:16:00 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,7 @@ int	main(int ac, char **av)
 	o = check(stack_a);
 	if (o == 2)
 		return (freed(stack_a), 0);
-	o = switch_int(&stack_a);
-	if (o == 0)
-		return ((write(1, error, 7)), 0);
+	switch_int(&stack_a);
 	//printf("jigebvqhe\n");
 	o = check_double(&stack_a);
 	if (o == 0)
