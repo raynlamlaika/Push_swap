@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:24 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/17 23:23:50 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/17 23:41:10 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ char	*ft_strchr(const char *str, int c);
 size_t	ft_strlen(const char *str);
 char	*ft_strdup(const char*source);
 
+int		ft_isdigit(int c);
 int		ft_atoi(const char *str);
 int		is_valid(char *c);
 void	ft_lstadd_back(t_list **lst, t_list *new);

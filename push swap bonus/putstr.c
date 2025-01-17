@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 09:09:38 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/17 10:45:41 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/17 23:40:33 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,11 @@ int	putstr(char *string)
 		}
 	}
 	return (i);
+}
+
+int	ft_isdigit(int c)
+{
+	if (c >= 48 && c <= 57)
+		return (1);
+	return (0);
 }

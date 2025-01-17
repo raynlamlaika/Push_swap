@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 17:19:31 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/17 23:24:16 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/17 23:45:01 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ static int	take_line(char **str, t_list **stack_a, t_list **stack_b)
 
 void	*parce(int ac, char **av, int o, t_list *stack_a)
 {
+	t_list	*pp;
+
+	pp = stack_a;
 	spliting_input(ac, av, &stack_a);
 	o = check(stack_a);
 	if (o == 0)
@@ -37,7 +40,7 @@ void	*parce(int ac, char **av, int o, t_list *stack_a)
 	if (o == 2)
 		return (freed(stack_a), NULL);
 	switch_int(&stack_a);
-	o = check_double(&stack_a);
+	o = check_double(&pp);
 	if (o == 0)
 		return (freed(stack_a), (write(1, "Error\n", 7)), NULL);
 	o = sort_check(&stack_a);
