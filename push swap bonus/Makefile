@@ -1,8 +1,8 @@
 NAME = push_swap
 
-SOURCE = ft_split.c helper_instra.c prace.c	putstr.c stack_oper_three.c \
-		stack_opr_tow.c helper_instra2.c linkedlist.c push_swap.c \
-		sort_big_stack.c  stack_opperations.c  utils.c
+SOURCE = bonus.c	prace_bonus.c	bonus_helper_bonus.c push_swap_bonus.h check1_bonus.c \
+		putstr_bonus.c stack_oper_three_bonus.c ft_split_bonus.c stack_opperations_bonus.c get_next_line.c stack_opr_tow_bonus.c \
+		get_next_line_utils.c  utils_bonus.c linkedlist_bonus.c
 
 CC=cc
 

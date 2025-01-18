@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 21:02:06 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/17 23:40:23 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/18 14:48:23 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,6 @@ size_t	ft_strlen(const char *str)
 	while (str[i])
 		i++;
 	return (i);
-}
-
-static int	ft_overflow(int sing)
-{
-	if (sing == 1)
-		return (-1);
-	return (0);
 }
 
 static void	cheek(int rs, int sing, int i, const char *str)

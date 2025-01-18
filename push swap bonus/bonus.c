@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 17:19:31 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/17 23:45:01 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/18 14:48:01 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	take_line(char **str, t_list **stack_a, t_list **stack_b)
 	i = 0;
 	while (str[i])
 	{
-		j = move(i, stack_a, stack_b, str[i]);
+		j = move(stack_a, stack_b, str[i]);
 		if (j == 0)
 			return (0);
 		i++;
@@ -49,7 +49,7 @@ void	*parce(int ac, char **av, int o, t_list *stack_a)
 	return (stack_a);
 }
 
-int	final_result(t_list *stack_a, t_list *stack_b, char*error, int o)
+int	final_result(t_list *stack_a, t_list *stack_b, int o)
 {
 	if (o == 0 && ft_lstsize(stack_b) == 0)
 		return (freed(stack_a), freed(stack_b), putstr("OK\n"), 1);
@@ -94,6 +94,8 @@ int	main(int ac, char **av)
 	int		o;
 	char	**moves;
 
+	o = 0;
+	stack_a = NULL;
 	stack_a = parce(ac, av, o, stack_a);
 	if (!stack_a)
 		return (0);
@@ -105,5 +107,5 @@ int	main(int ac, char **av)
 	clean_2(moves);
 	ii = stack_a;
 	o = sort_check(&ii);
-	return (final_result(stack_a, stack_b, "Error\n", o));
+	return (final_result(stack_a, stack_b, o));
 }

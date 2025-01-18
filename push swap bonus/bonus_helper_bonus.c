@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bonus_helper.c                                     :+:      :+:    :+:   */
+/*   bonus_helper_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 23:15:23 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/17 23:20:42 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/18 14:47:48 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	is_passed(char *str, char *sec)
 	return (1);
 }
 
-int	move(int i, t_list **stack_a, t_list **stack_b, char *str)
+int	move(t_list **stack_a, t_list **stack_b, char *str)
 {
 	if (is_passed(str, "pa"))
 		push_a(stack_a, stack_b);
