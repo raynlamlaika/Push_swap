@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:29:00 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/17 23:45:58 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/18 12:25:32 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	check_double(t_list **stack)
 	t_list	*tmp;
 	t_list	*pass;
 
-	if (!(*stack))
+	if (!(stack))
 		return (0);
 	tmp = *stack;
 	while (tmp)

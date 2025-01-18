@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 09:09:38 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/07 15:44:18 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/18 12:49:43 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,27 @@ int	putstr(char *string)
 		}
 	}
 	return (i);
+}
+
+int	is_valid(char *str)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	if (!str || !str[i])
+		return (0);
+	while (str[i] == '-' || str[i] == '+')
+		i++;
+	j = 0;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (0);
+		j++;
+		i++;
+	}
+	if (j < 1)
+		return (0);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:29:00 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/17 20:16:39 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/18 12:40:09 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	switch_int(t_list **stack_a)
 	curr = *stack_a;
 	while (curr)
 	{
-		ft_atoi((char *)curr->data);
+		i = ft_atoi((char *)curr->data);
 		free(curr->data);
 		curr->data = malloc(sizeof(int));
 		if (!(curr->data))

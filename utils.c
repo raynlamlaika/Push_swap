@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 21:02:06 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/17 23:19:14 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/18 12:49:33 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ size_t	ft_strlen(const char *str)
 
 int	ft_atoi(const char *str)
 {
-	int		i;
-	int	sing;
-	int	rs;
-	long long check_overflow;
+	int			i;
+	int			sing;
+	int			rs;
+	long long	check_overflow;
 
 	i = 0;
 	rs = 0;
@@ -59,27 +59,4 @@ int	ft_isdigit(int c)
 	if (c >= 48 && c <= 57)
 		return (1);
 	return (0);
-}
-
-int	is_valid(char *str)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	if (!str || !str[i])
-		return (0);
-	while (str[i] == '-' || str[i] == '+')
-		i++;
-	j = 0;
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (0);
-		j++;
-		i++;
-	}
-	if (j < 1)
-		return (0);
-	return (1);
 }
