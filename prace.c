@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:29:00 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/18 12:40:09 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/18 20:17:56 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	check(t_list *linked)
 		return (2);
 	while (tmp)
 	{
-		if (!is_valid((char *)tmp->data))
+		if (is_valid((char *)tmp->data) == 0)
 			return (0);
 		tmp = tmp->next;
 	}

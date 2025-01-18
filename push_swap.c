@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/18 14:39:50 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/18 20:20:24 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,18 @@ void	sort(int size, t_list *stack_a, t_list *stack_b)
 	freed(stack_a);
 	freed(stack_b);
 }
+void write_list(t_list *list)
+{
+	int  i;
+	i = 0;
+	while(list)
+	{
+		printf("\n-->[%s]\n",(char *)(*list).data);
+		i++;
+		list=list->next;
+	}
+	printf("\n");
+}
 
 int	main(int ac, char **av)
 {
@@ -84,9 +96,11 @@ int	main(int ac, char **av)
 	stack_a = NULL;
 	stack_b = NULL;
 	spliting_input(ac, av, &stack_a);
-	if (ft_lstsize(stack_a) != (ac - 1))
+	if (ft_lstsize(stack_a) < (ac - 1))
 		return (freed(stack_a), (write(1, error, 7)), 0);
 	o = check(stack_a);
+	if (o == 0)
+		return (freed(stack_a), write(1, "Erorr\n", 7), 0);
 	if (o == 2)
 		return (freed(stack_a), write(1, "Erorr\n", 7), 0);
 	switch_int(&stack_a);
