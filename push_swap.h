@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:24 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/18 12:57:19 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/18 18:08:43 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef struct l_list
 	int				*data;
 	struct l_list	*next;
 }					t_list;
+
+
 
 int		ft_atoi(const char *str);
 void	ft_lstadd_back(t_list **lst, t_list *new);

@@ -1,31 +1,47 @@
 NAME = push_swap
 
-SOURCE = ft_split.c helper_instra.c prace.c	putstr.c stack_oper_three.c \
-		stack_opr_tow.c helper_instra2.c linkedlist.c push_swap.c \
-		sort_big_stack.c  stack_opperations.c  utils.c
+SOURCE = ft_split.c helper_instra.c prace.c putstr.c stack_oper_three.c \
+         stack_opr_tow.c helper_instra2.c linkedlist.c push_swap.c \
+         sort_big_stack.c stack_opperations.c utils.c
 
-CC=cc
+BONUSOURCE = push_swap_bonus/prace_bonus.c push_swap_bonus/bonus_helper_bonus.c \
+             push_swap_bonus/check1_bonus.c push_swap_bonus/putstr_bonus.c \
+             push_swap_bonus/stack_oper_three_bonus.c push_swap_bonus/ft_split_bonus.c \
+             push_swap_bonus/stack_opperations_bonus.c push_swap_bonus/get_next_line.c \
+             push_swap_bonus/stack_opr_tow_bonus.c push_swap_bonus/get_next_line_utils.c \
+             push_swap_bonus/utils_bonus.c push_swap_bonus/linkedlist_bonus.c push_swap_bonus/bonus.c
 
-CFLAGS=-Wall -Werror -Wextra
+BNAME = checker
+CC = cc
 
-HEADER=push_swap.h
+CFLAGS = -Wall -Werror -Wextra
 
-OBJF=${SOURCE:.c=.o}
+HEADER = push_swap.h
+HEADERFILEB= push_swap_bonus/push_swap_bonus.h
+OBJF = $(SOURCE:.c=.o)
 
-all:${NAME}
+BOBJF = $(BONUSOURCE:.c=.o)
 
-${NAME}:${OBJF}
-	${CC} ${CFLAGS} $^ -o ${NAME}
+all: $(NAME)
 
-%.o: %.c
+$(NAME): $(OBJF)
+	$(CC) $(CFLAGS) $^ -o $(NAME)
+
+bonus: $(BNAME)
+
+$(BNAME): $(BOBJF)
+	$(CC) $(CFLAGS) $^ -o $(BNAME)
+
+%.o: %.c $(HEADER) $(HEADERFILEB)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+%bonus.o: %bonus.c $(HEADER) $(HEADERFILEB)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJF)
+	rm -f $(OBJF) $(BOBJF)
 
 fclean: clean
-	rm -f ${NAME}
+	rm -f $(NAME) $(BNAME)
 
 re: fclean all
-
-.PHONY: clean
