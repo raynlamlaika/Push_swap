@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 21:02:06 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/18 12:49:33 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/18 14:40:45 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,30 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
+static int	ft_overflow(int sing)
+{
+	if (sing == 1)
+		return (-1);
+	return (0);
+}
+
+static void	cheek(int rs, int sing, int i, const char *str)
+{
+	long	overflow;
+
+	overflow = ((long long)(rs * 10) + (str[i] - '0')) * (long long)sing;
+	if ((overflow > 2147483647) || (overflow < -2147483648))
+	{
+		write(1, "Error\n", 7);
+		exit(EXIT_FAILURE);
+	}
+}
+
 int	ft_atoi(const char *str)
 {
-	int			i;
-	int			sing;
-	int			rs;
-	long long	check_overflow;
+	int		i;
+	int		sing;
+	int		rs;
 
 	i = 0;
 	rs = 0;
@@ -42,12 +60,7 @@ int	ft_atoi(const char *str)
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		check_overflow = ((long long)(rs * 10) + (str[i] - '0')) * (long long)sing;
-		if (check_overflow > 2147483647 || check_overflow < -2147483648)
-		{
-			write(1, "Error\n", 7);
-			exit(0);
-		}
+		cheek(rs, sing, i, str);
 		rs = rs * 10 + str[i] - '0';
 		i++;
 	}

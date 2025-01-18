@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 17:19:31 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/18 14:48:01 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/18 16:27:14 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ char	**moooves(t_list *stack_a, char *error)
 	char	*tmpp;
 	char	*next;
 	char	*operation;
+	int		i;
 
 	operation = ft_strdup("");
 	if (!operation)
@@ -74,6 +75,9 @@ char	**moooves(t_list *stack_a, char *error)
 		free(operation), (write(1, error, 7)), NULL);
 	while (next)
 	{
+		i = search_search(next);
+		if (i == 0)
+			return (0);
 		tmpp = operation;
 		operation = ft_strjoin(operation, next);
 		if (!operation)

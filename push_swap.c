@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/18 13:07:37 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/18 14:39:50 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,18 +71,6 @@ void	sort(int size, t_list *stack_a, t_list *stack_b)
 	freed(stack_a);
 	freed(stack_b);
 }
-void write_list(t_list *list)
-{
-	int  i;
-	i = 0;
-	while(list)
-	{
-		printf("-->%d",*list->data);
-		i++;
-		list=list->next;
-	}
-	printf("\n");
-}
 
 int	main(int ac, char **av)
 {
@@ -112,33 +100,3 @@ int	main(int ac, char **av)
 	size = ft_lstsize(stack_a);
 	sort(size, stack_a, stack_b);
 }
-
-// #include "push_swap.h"
-// void apply_operation(const char *operation,
-// l_list **stack_a, l_list **stack_b) 
-// {
-// 	if (strcmp(operation, "pa") == 0)
-// 		push_a(stack_a, stack_b);
-// 	else if (strcmp(operation, "pb") == 0)
-// 		push_b(stack_b, stack_a);
-// 	else if (strcmp(operation, "sa") == 0)
-// 		swap_a(stack_a);
-// 	else if (strcmp(operation, "sb") == 0)
-// 		swap_b(stack_b);
-// 	else if (strcmp(operation, "ss") == 0)
-// 		swap_ab(stack_a, stack_b);
-// 	else if (strcmp(operation, "ra") == 0)
-// 		rotate_a(stack_a);
-// 	else if (strcmp(operation, "rb") == 0)
-// 		rotate_b(stack_b);
-// 	else if (strcmp(operation, "rr") == 0)
-// 		rotate_ab(stack_a, stack_b);
-// 	else if (strcmp(operation, "rra") == 0)
-// 		reverse_rotate_a(stack_a);
-// 	else if (strcmp(operation, "rrb") == 0)
-// 		reverse_rotate_b(stack_b);
-// 	else if (strcmp(operation, "rrr") == 0)
-// 		reverse_rotate_ab(stack_a, stack_b);
-// 	else 
-// 		printf("Invalid operation: %s\n", operation);
-// }

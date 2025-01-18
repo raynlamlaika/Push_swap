@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 23:15:23 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/18 14:47:48 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/18 16:27:01 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,18 @@ int	move(t_list **stack_a, t_list **stack_b, char *str)
 	else
 		return (write(2, "Error\n", 7), 0);
 	return (1);
+}
+
+int	search_search(char *str)
+{
+	if (is_passed(str, "pa\n") || is_passed(str, "sa\n") ||\
+	 is_passed(str, "sb\n") || is_passed(str, "ss\n") || \
+	 is_passed(str, "pb\n") || is_passed(str, "ra\n") || is_passed(str, "rb\n") \
+	|| is_passed(str, "rr\n") || is_passed(str, "rra\n") || is_passed(str, "rrb\n") || \
+	 is_passed(str, "rrr"))
+		return (1);
+	
+	else
+		return (write(2, "Error\n", 7), exit(1), 0);
+
 }

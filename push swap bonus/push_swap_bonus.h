@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:24 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/18 14:48:10 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/18 16:12:32 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,6 @@ void	clean_2(char **ptr);
 int		sort_check(t_list **stack_a);
 int		move(t_list **stack_a, t_list **stack_b, char *str);
 int		is_passed(char *str, char *sec);
+int		search_search(char *str);
 
 #endif
