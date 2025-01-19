@@ -32,10 +32,10 @@ bonus: $(BNAME)
 $(BNAME): $(BOBJF)
 	$(CC) $(CFLAGS) $^ -o $(BNAME)
 
-%.o: %.c $(HEADER) $(HEADERFILEB)
+%.o: %.c $(HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-%bonus.o: %bonus.c $(HEADER) $(HEADERFILEB)
+%bonus.o: %bonus.c $(HEADERFILEB)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

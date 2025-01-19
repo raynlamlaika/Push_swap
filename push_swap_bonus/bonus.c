@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 17:19:31 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/18 18:02:20 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/19 10:39:40 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	final_result(t_list *stack_a, t_list *stack_b, int o)
 	return (1);
 }
 
-char	**moooves(t_list *stack_a, char *error)
+char	**moooves(t_list *stack_a, char *error, t_list *stack_b)
 {
 	char	**moves;
 	char	*tmpp;
@@ -71,13 +71,14 @@ char	**moooves(t_list *stack_a, char *error)
 		return (free(operation), freed(stack_a), NULL);
 	next = get_next_line(0);
 	if (!next)
-		return (freed(stack_a), free(next), \
-		free(operation), (write(1, error, 7)), NULL);
+		return (freed(stack_a), free(next)
+		, free(operation), (write(1, error, 7)), NULL);
 	while (next)
 	{
 		i = search_search(next);
 		if (i == 0)
-			return (0);
+			return (freed(stack_a), freed(stack_b), free(operation), \
+			free(next), free(tmpp), NULL);
 		tmpp = operation;
 		operation = ft_strjoin(operation, next);
 		if (!operation)
@@ -102,9 +103,11 @@ int	main(int ac, char **av)
 	stack_a = NULL;
 	stack_a = parce(ac, av, o, stack_a);
 	if (!stack_a)
-		return (0);
+		return (freed(stack_a), freed(stack_b), 0);
 	o = 0;
-	moves = moooves(stack_a, "Error\n");
+	moves = moooves(stack_a, "Error\n", stack_b);
+	if (!moves)
+		return (freed(stack_b), 0);
 	o = take_line(moves, &stack_a, &stack_b);
 	if (o == 0)
 		return (freed(stack_a), freed(stack_b), clean_2(moves), 0);

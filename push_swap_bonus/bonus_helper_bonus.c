@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 23:15:23 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/18 16:27:01 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/19 10:23:40 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,6 @@ int	search_search(char *str)
 	|| is_passed(str, "rr\n") || is_passed(str, "rra\n") || is_passed(str, "rrb\n") || \
 	 is_passed(str, "rrr"))
 		return (1);
-	
 	else
-		return (write(2, "Error\n", 7), exit(1), 0);
-
+		return (write(2, "Error\n", 7), 0);
 }
