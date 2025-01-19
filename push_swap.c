@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/19 10:11:38 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/19 10:57:36 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,18 +71,6 @@ void	sort(int size, t_list *stack_a, t_list *stack_b)
 	freed(stack_a);
 	freed(stack_b);
 }
-void write_list(t_list *list)
-{
-	int  i;
-	i = 0;
-	while(list)
-	{
-		printf("\n-->[%s]\n",(char *)(*list).data);
-		i++;
-		list=list->next;
-	}
-	printf("\n");
-}
 
 int	main(int ac, char **av)
 {
@@ -90,7 +78,6 @@ int	main(int ac, char **av)
 	t_list	*stack_b;
 	char	*error;
 	int		o;
-	int		size;
 
 	error = "Error\n";
 	stack_a = NULL;
@@ -111,6 +98,5 @@ int	main(int ac, char **av)
 	if (o == 0)
 		return (freed(stack_a), 0);
 	sort_index(stack_a);
-	size = ft_lstsize(stack_a);
-	sort(size, stack_a, stack_b);
+	sort(ft_lstsize(stack_a), stack_a, stack_b);
 }

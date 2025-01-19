@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prace.c                                            :+:      :+:    :+:   */
+/*   prace_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:29:00 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/18 12:25:32 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/19 11:26:43 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	switch_int(t_list **stack_a)
 	curr = *stack_a;
 	while (curr)
 	{
-		i = ft_atoi((char *)curr->data);
+		i = ft_atoi((char *)curr->data, *stack_a);
 		free(curr->data);
 		curr->data = malloc(sizeof(int));
 		if (!(curr->data))
