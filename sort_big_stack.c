@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 22:47:32 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/20 10:06:15 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/20 13:38:21 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,12 @@ static void	real_sort(t_list **a, t_list **b, int size_of_stack)
 	}
 }
 
-void	sort_big(t_list **stack_a, t_list **stack_b)
+void	sort_big(int i, t_list **stack_a, t_list **stack_b)
 {
-	int	i;
 	int	chunk;
+	int	help;
 
-	i = 0;
+	help = more(*stack_a);
 	chunk = chunksize(stack_a);
 	while ((*stack_a))
 	{
@@ -98,8 +98,10 @@ void	sort_big(t_list **stack_a, t_list **stack_b)
 			rotate_b(stack_b);
 			i++;
 		}
-		else
+		else if (help / 3 > ft_lstsize(*stack_a))
 			rotate_a(stack_a);
+		else
+			reverse_rotate_a(stack_a);
 	}
 	real_sort(stack_a, stack_b, ft_lstsize(*stack_b));
 }

@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:24 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/20 09:52:55 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/20 14:26:54 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include <limits.h>
 
 typedef struct l_list
@@ -51,7 +50,7 @@ int		check(t_list *linked);
 int		putstr(char *string);
 void	switch_int(t_list **stack_a);
 int		sort_index(t_list *lst);
-void	sort_big(t_list **stack_a, t_list **stack_b);
+void	sort_big(int i, t_list **stack_a, t_list **stack_b);
 t_list	*find_min(t_list *stack_a);
 int		nbt_rotations_needed(t_list *stack_a, t_list *min);
 void	sort_small_stack(t_list **stack_a, t_list **stack_b);
@@ -63,5 +62,6 @@ void	clean_2(char **ptr);
 int		sort_check(t_list **stack_a);
 int		is_valid(char *str);
 int		ft_isdigit(int c);
+int		more(t_list *stack);
 
 #endif

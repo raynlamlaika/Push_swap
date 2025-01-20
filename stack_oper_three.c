@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 10:00:30 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/20 09:53:13 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/20 13:45:25 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,21 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	while (p->next)
 		p = p->next;
 	p->next = new;
+}
+
+int	more(t_list *stack)
+{
+	int	themove;
+
+	themove = 0;
+	if (!stack)
+		return (0);
+	while (stack->next)
+	{
+		if (*stack->data < *stack->next->data)
+			themove--;
+		themove++;
+		stack = stack->next;
+	}
+	return (themove);
 }

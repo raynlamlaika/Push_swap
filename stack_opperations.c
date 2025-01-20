@@ -6,13 +6,12 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 16:17:11 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/10 10:00:55 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/20 10:08:01 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// sa (swap a): swap the first tow elemment in Stack_a.
 int	swap_a(t_list **stack_a)
 {
 	t_list	*top;
@@ -29,7 +28,6 @@ int	swap_a(t_list **stack_a)
 	return (1);
 }
 
-// sb (swap b): swap the first tow elemment in Stack_b
 int	swap_b(t_list **stack_b)
 {
 	t_list	*top;

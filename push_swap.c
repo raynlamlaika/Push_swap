@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/19 10:57:36 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/20 14:07:50 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,9 @@ int	sort_check(t_list **stack_a)
 
 void	sort(int size, t_list *stack_a, t_list *stack_b)
 {
+	int	i;
+
+	i = 0;
 	if (size == 2)
 		swap_a(&stack_a);
 	else if (size == 3)
@@ -67,7 +70,7 @@ void	sort(int size, t_list *stack_a, t_list *stack_b)
 	else if (size > 2 && size <= 10)
 		sort_small_stack(&stack_a, &stack_b);
 	else
-		sort_big(&stack_a, &stack_b);
+		sort_big(i, &stack_a, &stack_b);
 	freed(stack_a);
 	freed(stack_b);
 }
@@ -85,17 +88,17 @@ int	main(int ac, char **av)
 	spliting_input(ac, av, &stack_a);
 	if (ft_lstsize(stack_a) < (ac - 1))
 		return (freed(stack_a), (write(1, error, 7)), 0);
-	o = check(stack_a);
-	if (o == 0)
+	if (check(stack_a) == 0)
 		return (freed(stack_a), write(1, "Erorr\n", 7), 0);
-	if (o == 2)
+	else if (check(stack_a) == 2)
 		return (freed(stack_a), write(1, "Erorr\n", 7), 0);
 	switch_int(&stack_a);
+	if (ft_lstsize(stack_a) < 3)
+		return (freed(stack_a), 0);
 	o = check_double(&stack_a);
 	if (o == 0)
 		return ((write(1, error, 7)), 0);
-	o = sort_check(&stack_a);
-	if (o == 0)
+	if (sort_check(&stack_a) == 0)
 		return (freed(stack_a), 0);
 	sort_index(stack_a);
 	sort(ft_lstsize(stack_a), stack_a, stack_b);

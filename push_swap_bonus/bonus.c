@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 17:19:31 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/19 11:20:06 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/20 14:23:43 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ void	*parce(int ac, char **av, int o, t_list *stack)
 {
 	t_list	*pp;
 
-	pp = stack;
+	pp = NULL;
 	spliting_input(ac, av, &stack);
+	pp = stack;
 	if (ft_lstsize(stack) < (ac - 1))
 		return (freed(stack), (write(1, "Error\n", 7)), NULL);
 	o = check(stack);
@@ -41,10 +42,10 @@ void	*parce(int ac, char **av, int o, t_list *stack)
 		return (freed(stack), (write(1, "Error\n", 7)), NULL);
 	if (o == 2)
 		return (freed(stack), NULL);
-	switch_int(&stack);
-	o = check_double(&pp);
+	switch_int(&pp);
+	o = check_double(&stack);
 	if (o == 0)
-		return (freed(stack), (write(1, "Error\n", 7)), NULL);
+		return ((write(1, "Error\n", 7)), NULL);
 	o = sort_check(&stack);
 	if (o == 0)
 		return (freed(stack), (write(1, "Error\n", 7)), NULL);

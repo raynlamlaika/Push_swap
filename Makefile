@@ -44,4 +44,4 @@ clean:
 fclean: clean
 	rm -f $(NAME) $(BNAME)
 
-re: fclean all
+re: fclean

@@ -6,25 +6,21 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:24 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/19 11:27:43 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/20 14:27:51 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_BONUS_H
 # define PUSH_SWAP_BONUS_H
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 3
-# endif
+# define BUFFER_SIZE 3
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include <limits.h>
 
 typedef struct l_list
 {
-	int				position_in_stack;
 	int				index;
 	int				*data;
 	struct l_list	*next;
@@ -35,7 +31,6 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strchr(const char *str, int c);
 size_t	ft_strlen(const char *str);
 char	*ft_strdup(const char*source);
-
 int		ft_isdigit(int c);
 int		ft_atoi(const char *str, t_list *stck);
 int		is_valid(char *c);
