@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 10:00:30 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/10 10:31:30 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/20 09:53:13 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,6 @@ int	rotate_ab(t_list **stack_a, t_list **stack_b)
 		return (0);
 	putstr("rr\n");
 	return (1);
-}
-
-int	max_node_positon(t_list *stack)
-{
-	t_list	*tmp;
-	t_list	*max;
-
-	tmp = stack;
-	max = tmp;
-	while (tmp)
-	{
-		if (*tmp->data > *max->data)
-			max = tmp;
-		tmp = tmp->next;
-	}
-	return (max->position_in_stack);
 }
 
 void	ft_lstadd_back(t_list **lst, t_list *new)

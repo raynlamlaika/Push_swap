@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:24 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/19 11:25:22 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/20 09:52:55 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 typedef struct l_list
 {
-	int				position_in_stack;
+	int				position;
 	int				index;
 	int				*data;
 	struct l_list	*next;
@@ -37,7 +37,7 @@ int		swap_a(t_list **stack_a);
 int		swap_b(t_list **stack_b);
 void	push_a(t_list **stack_a, t_list **stack_b);
 t_list	*lst_second(t_list *lst);
-int		max_node_positon(t_list *stack);
+int		max_positon(t_list *stack);
 int		rotate_a(t_list **stack_a);
 int		rotate_b(t_list **stack_b);
 int		rotate_ab(t_list **stack_a, t_list **stack_b);

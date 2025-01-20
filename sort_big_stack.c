@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 22:47:32 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/19 10:48:30 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/20 10:06:15 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ static int	chunksize(t_list **stack_a)
 	int	j;
 	int	list_size;
 
-	list_size = ft_lstsize(*stack_a) - 1;
-	return (j = list_size / 10);
+	if (ft_lstsize(*stack_a) >= 400)
+		return (j = 45);
+	list_size = ft_lstsize(*stack_a);
+	return (j = list_size / 6);
 }
 
 static void	set_position(t_list *stack)
@@ -30,29 +32,45 @@ static void	set_position(t_list *stack)
 	curr = stack;
 	while (curr)
 	{
-		curr->position_in_stack = i;
+		curr->position = i;
 		i++;
 		curr = curr->next;
 	}
 }
 
-static void	move_back_to_a(t_list **a, t_list **b, int size_of_stack)
+int	max_positon(t_list *stack)
 {
-	int	max_node_position;
+	t_list	*tmp;
+	t_list	*max;
+
+	tmp = stack;
+	max = tmp;
+	while (tmp)
+	{
+		if (*tmp->data > *max->data)
+			max = tmp;
+		tmp = tmp->next;
+	}
+	return (max->position);
+}
+
+static void	real_sort(t_list **a, t_list **b, int size_of_stack)
+{
+	int	max_position;
 
 	size_of_stack = ft_lstsize(*b);
 	while (size_of_stack)
 	{
 		set_position(*b);
-		max_node_position = max_node_positon(*b);
-		if (max_node_position < size_of_stack / 2)
+		max_position = max_positon(*b);
+		if (max_position < size_of_stack / 2)
 		{
-			while ((*b)->position_in_stack != max_node_position)
+			while ((*b)->position != max_position)
 				rotate_b(b);
 		}
 		else
 		{
-			while ((*b)->position_in_stack != max_node_position)
+			while ((*b)->position != max_position)
 				reverse_rotate_b(b);
 		}
 		push_a(a, b);
@@ -83,5 +101,5 @@ void	sort_big(t_list **stack_a, t_list **stack_b)
 		else
 			rotate_a(stack_a);
 	}
-	move_back_to_a(stack_a, stack_b, ft_lstsize(*stack_b));
+	real_sort(stack_a, stack_b, ft_lstsize(*stack_b));
 }
