@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 09:09:38 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/18 20:15:35 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/27 22:43:47 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,25 @@ int	putstr(char *string)
 	return (i);
 }
 
-int	is_valid(char *str)
+int	ft_strncmp(const char *str1, const char *str2, size_t num)
 {
-	int	i;
-	int	j;
+	size_t	i;
+
+	i = 0;
+	while (i < num && (str1[i] || str2[i]))
+	{
+		if (str1[i] != str2[i])
+			return ((unsigned char)str1[i] - (unsigned char)str2[i]);
+		i++;
+	}
+	return (0);
+}
+
+int	is_valid(char *str, t_list *stack)
+{
+	int		i;
+	int		j;
+	char	*helper;
 
 	i = 0;
 	if (!str || !str[i])
@@ -48,12 +63,15 @@ int	is_valid(char *str)
 		i++;
 	j = 0;
 	while (str[i])
-	{
+	{		
 		if (!ft_isdigit(str[i]))
 			return (0);
 		j++;
 		i++;
 	}
+	helper = ft_itoa(ft_atoi(str, stack));
+	if (ft_strncmp(helper, str, ft_strlen(str)) != 0)
+		return (0);
 	if (j < 1)
 		return (0);
 	return (1);

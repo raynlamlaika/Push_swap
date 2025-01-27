@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:24 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/20 14:27:51 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/27 22:29:04 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ size_t	ft_strlen(const char *str);
 char	*ft_strdup(const char*source);
 int		ft_isdigit(int c);
 int		ft_atoi(const char *str, t_list *stck);
-int		is_valid(char *c);
+int		is_valid(char *c, t_list *stack);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 char	**ft_split(char const *s, char c);
 size_t	ft_strlen(const char *str);
@@ -64,5 +64,6 @@ int		sort_check(t_list **stack_a);
 int		move(t_list **stack_a, t_list **stack_b, char *str);
 int		is_passed(char *str, char *sec);
 int		search_search(char *str);
+char	*ft_itoa(int n);
 
 #endif

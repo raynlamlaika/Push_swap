@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:24 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/20 14:26:54 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/27 22:23:29 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct l_list
 	int				*data;
 	struct l_list	*next;
 }					t_list;
-
+char	*ft_itoa(int n);
 int		ft_atoi(const char *str, t_list *stck);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 char	**ft_split(char const *s, char c);
@@ -60,7 +60,7 @@ int		check_double(t_list **stack);
 void	freed(t_list *lst);
 void	clean_2(char **ptr);
 int		sort_check(t_list **stack_a);
-int		is_valid(char *str);
+int		is_valid(char *str, t_list *stack);
 int		ft_isdigit(int c);
 int		more(t_list *stack);
 

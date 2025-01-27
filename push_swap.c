@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/20 14:07:50 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/27 22:41:44 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,19 +85,15 @@ int	main(int ac, char **av)
 	error = "Error\n";
 	stack_a = NULL;
 	stack_b = NULL;
+	if (ac < 2)
+		return (0);
 	spliting_input(ac, av, &stack_a);
-	if (ft_lstsize(stack_a) < (ac - 1))
-		return (freed(stack_a), (write(1, error, 7)), 0);
-	if (check(stack_a) == 0)
-		return (freed(stack_a), write(1, "Erorr\n", 7), 0);
-	else if (check(stack_a) == 2)
-		return (freed(stack_a), write(1, "Erorr\n", 7), 0);
+	if (check(stack_a) == 0 || (ft_lstsize(stack_a) < 2))
+		return (freed(stack_a), write(2, "Erorr\n", 7), 0);
 	switch_int(&stack_a);
-	if (ft_lstsize(stack_a) < 3)
-		return (freed(stack_a), 0);
 	o = check_double(&stack_a);
 	if (o == 0)
-		return ((write(1, error, 7)), 0);
+		return ((write(2, error, 7)), 0);
 	if (sort_check(&stack_a) == 0)
 		return (freed(stack_a), 0);
 	sort_index(stack_a);

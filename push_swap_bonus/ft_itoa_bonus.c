@@ -1,61 +1,65 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check1_bonus.c                                     :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/17 08:13:29 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/24 10:12:53 by rlamlaik         ###   ########.fr       */
+/*   Created: 2024/10/25 12:46:29 by rlamlaik          #+#    #+#             */
+/*   Updated: 2025/01/27 22:30:20 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-void	clean_2(char **ptr)
+static int	alloction(int n)
 {
 	int	i;
 
 	i = 0;
-	if (!ptr)
-		return ;
-	while (ptr[i])
+	if (n == 0)
+		return (1);
+	if (n < 0)
+		i += 1;
+	while (n != 0)
 	{
-		free(ptr[i]);
-		ptr[i] = NULL;
+		n /= 10;
 		i++;
 	}
-	free(ptr);
-	ptr = NULL;
+	return (i);
 }
 
-void	freed(t_list *lst)
+static void	copyintoarray(long nb, size_t i, char *p)
 {
-	t_list	*tmp;
-
-	if (!lst)
-		return ;
-	while (lst)
+	while (nb > 0)
 	{
-		tmp = lst->next;
-		free(lst->data);
-		free(lst);
-		lst = tmp;
+		p[--i] = (nb % 10) + '0';
+		nb /= 10;
 	}
 }
 
-int	sort_check(t_list **stack_a)
+char	*ft_itoa(int n)
 {
-	t_list	*tmp;
+	char	*p;
+	size_t	i;
+	long	nb;
 
-	if (!(*stack_a))
+	i = alloction(n);
+	nb = n;
+	p = (char *) malloc(sizeof(char) * (i + 1));
+	if (!p)
 		return (0);
-	tmp = *stack_a;
-	while (tmp->next)
+	p[i] = '\0';
+	if (n == 0)
 	{
-		if (*tmp->data > *tmp->next->data)
-			return (1);
-		tmp = tmp->next;
+		p[0] = '0';
+		return (p);
 	}
-	return (0);
+	if (n < 0)
+	{
+		nb = -nb;
+		p[0] = '-';
+	}
+	copyintoarray(nb, i, p);
+	return (p);
 }

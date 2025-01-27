@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 17:19:31 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/20 14:23:43 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/24 10:52:13 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,20 @@ void	*parce(int ac, char **av, int o, t_list *stack)
 	pp = NULL;
 	spliting_input(ac, av, &stack);
 	pp = stack;
-	if (ft_lstsize(stack) < (ac - 1))
-		return (freed(stack), (write(1, "Error\n", 7)), NULL);
+	if (ft_lstsize(stack) <= 1)
+		return (freed(stack), (write(2, "Error\n", 7)), NULL);
 	o = check(stack);
 	if (o == 0)
-		return (freed(stack), (write(1, "Error\n", 7)), NULL);
+		return (freed(stack), (write(2, "Error\n", 7)), NULL);
 	if (o == 2)
 		return (freed(stack), NULL);
 	switch_int(&pp);
 	o = check_double(&stack);
 	if (o == 0)
-		return ((write(1, "Error\n", 7)), NULL);
+		return ((write(2, "Error\n", 7)), NULL);
 	o = sort_check(&stack);
 	if (o == 0)
-		return (freed(stack), (write(1, "Error\n", 7)), NULL);
+		return (freed(stack), (write(2, "Error\n", 7)), NULL);
 	return (stack);
 }
 
@@ -101,10 +101,12 @@ int	main(int ac, char **av)
 	stack_a = NULL;
 	stack_b = NULL;
 	o = 0;
+	o = 0;
+	if (ac < 2)
+		return (0);
 	stack_a = parce(ac, av, o, stack_a);
 	if (!stack_a)
 		return (freed(stack_a), freed(stack_b), 0);
-	o = 0;
 	moves = moooves(o, stack_a, "Error\n", stack_b);
 	if (!moves)
 		return (freed(stack_b), 0);

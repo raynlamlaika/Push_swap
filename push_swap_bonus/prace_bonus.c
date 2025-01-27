@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:29:00 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/20 14:12:23 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/27 22:27:38 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,9 @@ int	check(t_list *linked)
 	t_list	*tmp;
 
 	tmp = linked;
-	if (ft_lstsize(linked) < 2)
-		return (2);
 	while (tmp)
 	{
-		if (!is_valid((char *)tmp->data))
+		if (!is_valid((char *)tmp->data, linked))
 			return (0);
 		tmp = tmp->next;
 	}

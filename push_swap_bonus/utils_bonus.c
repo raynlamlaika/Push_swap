@@ -6,7 +6,7 @@
 /*   By: rlamlaik <rlamlaik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 21:02:06 by rlamlaik          #+#    #+#             */
-/*   Updated: 2025/01/20 10:05:04 by rlamlaik         ###   ########.fr       */
+/*   Updated: 2025/01/27 22:44:14 by rlamlaik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,11 @@ int	ft_atoi(const char *str, t_list *stck)
 	return ((int )rs * sing);
 }
 
-int	is_valid(char *str)
+int	is_valid(char *str, t_list *stack)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	char	*helper;
 
 	i = 0;
 	if (!str || !str[i])
@@ -79,6 +80,11 @@ int	is_valid(char *str)
 		j++;
 		i++;
 	}
+	if (j < 1)
+		return (0);
+	helper = ft_itoa(ft_atoi(str, stack));
+	if (ft_strncmp(helper, str, ft_strlen(str)) != 0)
+		return (0);
 	if (j < 1)
 		return (0);
 	return (1);
