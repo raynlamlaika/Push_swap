@@ -70,9 +70,8 @@ int	is_valid(char *str, t_list *stack)
 		i++;
 	}
 	helper = ft_itoa(ft_atoi(str, stack));
-	if (ft_strncmp(helper, str, ft_strlen(str)) != 0)
-		return (0);
-	if (j < 1)
+	if ((ft_strncmp(helper, str, ft_strlen(str)) != 0 && \
+	ft_atoi(str, stack) != 0) || j < 1)
 		return (0);
 	return (1);
 }

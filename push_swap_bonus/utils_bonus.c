@@ -61,6 +61,20 @@ int	ft_atoi(const char *str, t_list *stck)
 	return ((int )rs * sing);
 }
 
+static int	ft_strncmp(const char *str1, const char *str2, size_t num)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < num && (str1[i] || str2[i]))
+	{
+		if (str1[i] != str2[i])
+			return ((unsigned char)str1[i] - (unsigned char)str2[i]);
+		i++;
+	}
+	return (0);
+}
+
 int	is_valid(char *str, t_list *stack)
 {
 	int		i;
@@ -83,9 +97,8 @@ int	is_valid(char *str, t_list *stack)
 	if (j < 1)
 		return (0);
 	helper = ft_itoa(ft_atoi(str, stack));
-	if (ft_strncmp(helper, str, ft_strlen(str)) != 0)
-		return (0);
-	if (j < 1)
+	if ((ft_strncmp(helper, str, ft_strlen(str)) != 0 && \
+	ft_atoi(str, stack) != 0) || j < 1)
 		return (0);
 	return (1);
 }
